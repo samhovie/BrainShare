@@ -15,7 +15,36 @@ body {
 box-sizing: border-box;
 }
 
+h1 {
+    margin: 0;
+}
+
 #root {
     height: 100%;
     width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.fit-width {
+    width: fit-content;
 }

@@ -9,32 +9,32 @@ import { useSelector } from "react-redux";
 import SplashPage from "./components/SplashPage";
 
 function App() {
-  const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const sessionUser = useSelector((state) => state.session.user)
+    const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false);
+    const sessionUser = useSelector((state) => state.session.user);
 
-  useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(authenticate()).then(() => setIsLoaded(true));
+    }, [dispatch]);
 
-  return (
-    <>
-      {sessionUser && <Navigation isLoaded={isLoaded} />}
-      {isLoaded && (
-        <Switch>
-          <Route path="/" >
-            <SplashPage />
-          </Route>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
-    </>
-  );
+    return (
+        <>
+            {sessionUser && <Navigation isLoaded={isLoaded} />}
+            {isLoaded && (
+                <Switch>
+                    <Route path="/">
+                        {!sessionUser ? <SplashPage /> : <>FeedPage</>}
+                    </Route>
+                    <Route path="/login">
+                        <LoginFormPage />
+                    </Route>
+                    <Route path="/signup">
+                        <SignupFormPage />
+                    </Route>
+                </Switch>
+            )}
+        </>
+    );
 }
 
 export default App;

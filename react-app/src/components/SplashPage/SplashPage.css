@@ -4,3 +4,25 @@
     height: 100%;
     width: 100%;
 }
+.splash-container {
+    width: 700px;
+    height: 500px;
+    border-radius: 20px;
+}
+div {
+    border: 1px solid red;
+}
+.splash-content {
+    height: 100%;
+}
+.splash-content > div {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+.splash-footer {
+    height: 70px;
+}
+.splash-title {
+    height: 200px;
+}
