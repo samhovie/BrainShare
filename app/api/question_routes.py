@@ -5,14 +5,13 @@ from app.models import Question
 question_routes = Blueprint('questions', __name__)
 
 
-# @user_routes.route('/')
-# @login_required
-# def users():
+@question_routes.route('/')
+def questions():
 #     """
-#     Query for all users and returns them in a list of user dictionaries
+#     Query for all questions and returns them in a list of user dictionaries
 #     """
-#     users = User.query.all()
-#     return {'users': [user.to_dict() for user in users]}
+    questions = Question.query.all()
+    return {'questions': [question.to_dict() for question in questions]}
 
 
 # @user_routes.route('/<int:id>')

@@ -1,22 +1,18 @@
 from app.models import db, Question, environment, SCHEMA, fake
 from sqlalchemy.sql import text
-
+import random
 
 # Adds a demo user, you can add other users here if you want
 def seed_questions():
     # fake.displayName()
     demo = Question(user_id=1, text=fake.sentence()[:-1] + '?')
 
-    # demo = User(
-    #     username='Demo', email='demo@aa.io', password='password')
-    # marnie = User(
-    #     username='marnie', email='marnie@aa.io', password='password')
-    # bobbie = User(
-    #     username='bobbie', email='bobbie@aa.io', password='password')
+    for _ in range(200):
+        question = Question(user_id=random.randint(1,10), text=fake.sentence()[:-1] + '?')
+        db.session.add(question)
+
 
     db.session.add(demo)
-    # db.session.add(marnie)
-    # db.session.add(bobbie)
     db.session.commit()
 
 
