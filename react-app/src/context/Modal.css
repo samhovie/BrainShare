@@ -22,3 +22,13 @@
   position: absolute;
   background-color:white;
 }
+
+#modal-content > div >  form {
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-content > div > form > label {
+  display: flex;
+  flex-direction: column;
+}

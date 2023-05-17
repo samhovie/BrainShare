@@ -1,5 +1,8 @@
 import React from "react";
 import "./SplashPage.css";
+import LoginFormPage from "../LoginFormPage";
+import SignupFormModal from "../SignupFormModal";
+import OpenModalButton from "../OpenModalButton";
 
 export default function SplashPage() {
     return (
@@ -11,9 +14,17 @@ export default function SplashPage() {
                 </div>
 
                 <div className="splash-content flex">
-                    <div></div>
+                    <div className="splash-content-left flex-col center ">
+                        <OpenModalButton
+                            buttonText="Sign Up"
+                            //   onItemClick={closeMenu}
+                            modalComponent={<SignupFormModal />}
+                        />
+                    </div>
 
-                    <div></div>
+                    <div className="splash-content-right flex flex-col">
+                        <LoginFormPage></LoginFormPage>
+                    </div>
                 </div>
                 <div className="splash-footer top"></div>
                 <div className="splash-footer bottom"></div>

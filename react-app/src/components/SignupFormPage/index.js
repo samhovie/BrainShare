@@ -28,13 +28,13 @@ function SignupFormPage() {
   };
 
   return (
-    <>
+    <div className="flex flex-col max-width ">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
+        <label  className="flex flex-col">
           Email
           <input
             type="text"
@@ -43,7 +43,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        <label>
+        <label  className="flex flex-col">
           Username
           <input
             type="text"
@@ -52,7 +52,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        <label>
+        <label className="flex flex-col">
           Password
           <input
             type="password"
@@ -61,7 +61,7 @@ function SignupFormPage() {
             required
           />
         </label>
-        <label>
+        <label className="flex flex-col">
           Confirm Password
           <input
             type="password"
@@ -72,7 +72,7 @@ function SignupFormPage() {
         </label>
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

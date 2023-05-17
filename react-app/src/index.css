@@ -11,8 +11,27 @@ body {
     width: 100vw;
 }
 
+
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+
+    border: 1px solid #cccccc;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
 * {
 box-sizing: border-box;
+font-family: Arial;
 }
 
 h1 {
@@ -47,4 +66,8 @@ h1 {
 
 .fit-width {
     width: fit-content;
+}
+
+.max-width {
+    width: 100%;
 }
