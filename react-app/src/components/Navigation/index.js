@@ -22,7 +22,8 @@ function Navigation({ isLoaded }) {
                     </NavLink>
                 </li>
                 {isLoaded && (
-                    <li>
+                    <li className="flex">
+                        <input className="search" placeholder="Search"></input>
                         <ProfileButton user={sessionUser} />
                     </li>
                 )}

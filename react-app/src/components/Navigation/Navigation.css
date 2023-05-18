@@ -37,3 +37,14 @@
   width: 40px;
   height: 40px;
 }
+.search {
+  width: 300px;
+  margin: 0 0px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  padding: 0 10px;
+}
+.fa-user-circle {
+  color: #ffffff;
+}
