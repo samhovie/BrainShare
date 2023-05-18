@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import { useSelector } from "react-redux";
 import SplashPage from "./components/SplashPage";
+import FeedPage from "./components/FeedPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function App() {
             {isLoaded && (
                 <Switch>
                     <Route path="/">
-                        {!sessionUser ? <SplashPage /> : <>FeedPage</>}
+                        {!sessionUser ? <SplashPage /> : <FeedPage/>}
                     </Route>
                     <Route path="/login">
                         <LoginFormPage />

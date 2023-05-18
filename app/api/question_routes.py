@@ -14,11 +14,11 @@ def questions():
     return {'questions': [question.to_dict() for question in questions]}
 
 
-# @user_routes.route('/<int:id>')
-# @login_required
-# def user(id):
+# @questions.route('/<int:id>')
+# # @login_required
+# def question(id):
 #     """
-#     Query for a user by id and returns that user in a dictionary
+#     Query for a question by id and returns that user in a dictionary
 #     """
-#     user = User.query.get(id)
-#     return user.to_dict()
+#     question = Question.query.get(id)
+#     return question.to_dict()
