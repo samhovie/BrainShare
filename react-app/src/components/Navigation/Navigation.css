@@ -1,7 +1,17 @@
 .profile-dropdown {
-  position: absolute;
+    position: absolute;
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+.navigation {
+    margin: 0;
+    height: 60px;
+
+    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }

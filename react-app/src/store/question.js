@@ -1,9 +1,6 @@
 const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
 
-
 const GET_QUESTIONS = "songs/GET_QUESTIONS";
-
-
 
 export const getAllQuestionsAction = (questions) => ({
 	type: GET_QUESTIONS,
