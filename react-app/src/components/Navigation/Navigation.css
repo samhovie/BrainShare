@@ -7,11 +7,33 @@
 }
 
 .navigation {
-    margin: 0;
-    height: 60px;
 
-    border: 1px solid red;
-    position: fixed;
-    top: 0;
-    width: 100%;
+    width: 1150px;
+    /* border: 1px solid blue; */
+
+    /* padding: 0; */
+
+}
+
+.navigation-container {
+  margin: 0;
+  height: 60px;
+
+
+  position: fixed;
+  top: 0;
+  /* border: 1px solid red; */
+  width: 100%;
+
+  background-color: #161b22;
+}
+.main-title {
+  font-size: 25px;
+  padding: 0px 20px;
+  color: #f8f3f3
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
 }
