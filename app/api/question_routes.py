@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import Question
+from flask_login import login_required, current_user
+from app.models import db, Question
 
 question_routes = Blueprint('questions', __name__)
 
@@ -14,11 +14,17 @@ def questions():
     return {'questions': [question.to_dict() for question in questions]}
 
 
-# @questions.route('/<int:id>')
-# # @login_required
-# def question(id):
-#     """
-#     Query for a question by id and returns that user in a dictionary
-#     """
-#     question = Question.query.get(id)
-#     return question.to_dict()
+@question_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+def delete_question(id):
+    """
+    Delete a question by id and returns success
+    """
+
+    q = Question.query.get(id)
+    if q.user_id == current_user.id:
+        db.session.delete(q)
+        db.session.commit()
+        return {'success': 'good job'}
+    else:
+        return {"errors": 'nacho question'}
