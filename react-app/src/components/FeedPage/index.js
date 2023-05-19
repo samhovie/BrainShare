@@ -62,7 +62,7 @@ export default function FeedPage() {
             {questions.map((question) => (
                 <div key={question.id}>
                     {question.text}
-                    {question.user_id === sessionId && (
+                    {question.user_id === sessionUser?.id && (
                         <>
                             <OpenModalButton
                                 className="delete-question"
