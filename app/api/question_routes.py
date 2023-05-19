@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Question
+from app.forms import QuestionForm
 
 question_routes = Blueprint('questions', __name__)
 
@@ -28,3 +29,24 @@ def delete_question(id):
         return {'success': 'good job'}
     else:
         return {"errors": 'nacho question'}
+
+
+@question_routes.route('/<int:id>', methods=['PUT'])
+# @login_required
+def update_question(id):
+    """
+    Update a question by id and returns success
+    """
+    form = QuestionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print('HHHHHHHHHHHH', form.data)
+    if form.validate_on_submit():
+        q = Question.query.get(id)
+        if q.user_id == current_user.id:
+            q.text = form.data['text']
+            db.session.commit()
+            return {'question': q.to_dict()}
+        else:
+            return {"errors": 'nacho question'}
+    else:
+        return {'errors': 'validation error'}
