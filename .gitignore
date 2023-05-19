@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-/instance
+/instance/dev.db
 
 
 # testing
