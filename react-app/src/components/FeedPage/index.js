@@ -40,6 +40,7 @@ export default function FeedPage() {
         useSelector((state) => state.questions.allQuestions)
     );
     const sessionUser = useSelector((state) => state.session.user);
+    const sessionId = sessionUser.id
     const { closeModal } = useModal();
 
 
@@ -61,7 +62,7 @@ export default function FeedPage() {
             {questions.map((question) => (
                 <div key={question.id}>
                     {question.text}
-                    {question.user_id === sessionUser.id && (
+                    {question.user_id === sessionId && (
                         <>
                             <OpenModalButton
                                 className="delete-question"
