@@ -16,6 +16,10 @@ a {
     text-decoration: none;
 }
 
+p {
+    margin: 0;
+}
+
 button {
     border: none;
     margin: 0;
@@ -35,6 +39,7 @@ button {
 * {
     box-sizing: border-box;
     font-family: Arial;
+
 }
 
 h1 {
@@ -85,4 +90,13 @@ ul {
 
 .page {
     padding-top: 70px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.title-lg {
+    font-size: 1.17rem;
+    font-weight: bold;
 }

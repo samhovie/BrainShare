@@ -17,7 +17,6 @@ export default function SplashPage() {
                     <div className="splash-content-left flex-col center ">
                         <OpenModalButton
                             buttonText="Sign Up"
-                            //   onItemClick={closeMenu}
                             modalComponent={<SignupFormModal />}
                         />
                     </div>

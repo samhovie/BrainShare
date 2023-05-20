@@ -1,0 +1,22 @@
+div {
+    border: 1px solid red;
+
+}
+
+.card-container {
+    width: 590px;
+}
+
+#holder {
+    width: 40px;
+    height: 40px;
+}
+
+#nav-space {
+    height: 70px;
+}
+
+.card-user-icon {
+    width: 42px;
+    height: 42px;
+}
