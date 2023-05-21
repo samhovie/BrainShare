@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import { useSelector } from "react-redux";
 import SplashPage from "./components/SplashPage";
 import FeedPage from "./components/FeedPage";
-import Card from "./components/Card";
+import QuestionCard from "./components/QuestionCard";
 
 function App() {
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function App() {
                 <Switch>
                     <Route path="/">
                         {/* {!sessionUser ? <SplashPage /> : <FeedPage/>} */}
-                        <Card/>
+                        <QuestionCard/>
                     </Route>
                     <Route path="/login">
                         <LoginFormPage />

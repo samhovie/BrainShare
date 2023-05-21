@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Card.css";
+import "./QuestionCard.css";
 
-export default function Card() {
+export default function QuestionCard() {
     return (
         <>
             <div id="nav-space"></div>
@@ -15,6 +15,7 @@ export default function Card() {
                                 alt="card-user-icon"
                                 className="card-user-icon"
                             ></img>
+                            {/* <i className="fa-solid fa-circle-user fa-2xl"></i> */}
                         </div>
 
                         <div className="flex flex-col">
@@ -28,9 +29,10 @@ export default function Card() {
                         </div>
                     </div>
 
-                    <div>
-                        <i class="fas fa-times fa-lg x-button"></i>
-                    </div>
+                    {/* <div className=""> */}
+                        <button className="delete flex center"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
+                    {/* </div> */}
                 </div>
 
                 <div>
@@ -51,7 +53,7 @@ export default function Card() {
 
                 <div className="card card-button-row">
                     <button className="answer">
-                        {/* <i></i> */}
+                    <i className="fa-regular fa-pen-to-square"></i>
                         Answer
                     </button>
 
