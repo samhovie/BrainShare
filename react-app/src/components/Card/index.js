@@ -29,7 +29,7 @@ export default function Card() {
                     </div>
 
                     <div>
-                        <i class="fas fa-times"></i>
+                        <i class="fas fa-times fa-lg x-button"></i>
                     </div>
                 </div>
 
@@ -49,7 +49,13 @@ export default function Card() {
                     </p>
                 </div>
 
-                <div></div>
+                <div className="card card-button-row">
+                    <button className="answer">
+                        {/* <i></i> */}
+                        Answer
+                    </button>
+
+                </div>
             </div>
         </>
     );

@@ -20,3 +20,18 @@ div {
     width: 42px;
     height: 42px;
 }
+
+.card-button-row {
+    height: 45px;
+}
+
+button.upvote {
+    border-radius: 20px 0 0 20px;
+}
+button.downvote {
+    border-radius: 0 20px 20px 0;
+}
+
+button.answer {
+    border-radius: 20px;
+}
