@@ -41,9 +41,6 @@ export default function FeedPage() {
         useSelector((state) => state.questions.allQuestions)
     );
     const sessionUser = useSelector((state) => state.session.user);
-    // const sessionId = sessionUser.id
-    console.log(sessionUser)
-    console.log(questions[0])
     const { closeModal } = useModal();
 
 

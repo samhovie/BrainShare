@@ -14,6 +14,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #000000;
 }
 
 p {
@@ -39,11 +40,13 @@ button {
 * {
     box-sizing: border-box;
     font-family: Arial;
-
 }
+
+
 
 h1 {
     margin: 0;
+    font-family: 'Oswald', sans-serif;
 }
 
 #root {
@@ -99,7 +102,7 @@ ul {
 .page {
     width: 100%;
     padding-top: 70px;
-    padding-left: 18%;
+    padding-left: 20%;
     padding-right: 15%;
 }
 
