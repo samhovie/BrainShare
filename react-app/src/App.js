@@ -8,8 +8,8 @@ import Navigation from "./components/Navigation";
 import { useSelector } from "react-redux";
 import SplashPage from "./components/pages/SplashPage";
 import FeedPage from "./components/pages/FeedPage";
-import QuestionCard from "./components/cards/QuestionCard";
-import QuestinDetailPage from "./components/pages/QuestionDetailPage";
+// import QuestionCard from "./components/cards/QuestionCard";
+import QuestionDetailPage from "./components/pages/QuestionDetailPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -25,8 +25,8 @@ function App() {
             {sessionUser && <Navigation isLoaded={isLoaded} />}
             {isLoaded && (
                 <Switch>
-                    <Route path="/">
-                        {!sessionUser ? <SplashPage /> : <FeedPage/>}
+                    <Route exact path="/">
+                        {!sessionUser ? <SplashPage /> : <FeedPage />}
                     </Route>
                     <Route path="/login">
                         <LoginFormPage />
@@ -35,10 +35,9 @@ function App() {
                         <SignupFormPage />
                     </Route>
                     <Route path="/questions/:id">
-                        <SignupFormPage />
+                        <QuestionDetailPage />
                     </Route>
                 </Switch>
-
             )}
         </>
     );

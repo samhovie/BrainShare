@@ -49,3 +49,13 @@ def update_question(id):
             return {"errors": 'nacho question'}
     else:
         return {'errors': 'validation error'}
+
+
+@question_routes.route('/<int:id>')
+# @login_required
+def get_question(id):
+    """
+    Get a question by id
+    """
+    q = Question.query.get(id)
+    return {'question': q.to_dict()}

@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import "./QuestionCard.css";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function QuestionCard({ question }) {
-    const sessionUser = useSelector((state) => state.session.user);
-    console.log(question);
 
     return (
         <>
-            <NavLink to="/">
+            <NavLink to={`/questions/${question.id}`}>
                 <div className=" card card-container">
                     <div className=" card flex space-between">
                         <div className="flex">

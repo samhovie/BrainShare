@@ -1,12 +1,18 @@
 const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
 
-const GET_QUESTIONS = "songs/GET_QUESTIONS";
-const DELETE_QUESTION = "songs/DELETE_QUESTION";
-const UPDATE_QUESTION = "songs/UPDATE_QUESTION";
+const GET_QUESTIONS = "questions/GET_QUESTIONS";
+const GET_QUESTION = "questions/GET_QUESTION";
+const DELETE_QUESTION = "questions/DELETE_QUESTION";
+const UPDATE_QUESTION = "questions/UPDATE_QUESTION";
 
 const getQuestionsAction = (questions) => ({
 	type: GET_QUESTIONS,
 	payload: questions
+});
+
+const getQuestionAction = (question) => ({
+	type: GET_QUESTION,
+	payload: question
 });
 
 const deleteQuestionAction = (id) => ({
@@ -28,6 +34,17 @@ export const getQuestionsThunk = () => async (dispatch) => {
             return data.errors;
         }
 		return dispatch(getQuestionsAction(normalize(data.questions)));
+	}
+};
+
+export const getQuestionThunk = (id) => async (dispatch) => {
+	const response = await fetch(`/api/questions/${id}`)
+	if (response.ok) {
+		const data = await response.json();
+		if (data.errors) {
+            return data.errors;
+        }
+		return dispatch(getQuestionAction(data.question));
 	}
 };
 
@@ -60,7 +77,7 @@ export const updateQuestionThunk = (question) => async (dispatch) => {
 };
 
 
-const initialState = { allQuestions: {} }
+const initialState = { allQuestions: {}, singleQuestion: {} }
 
 export default function questionsReducer(state = initialState, action) {
 	const newState = {...state}
@@ -73,6 +90,8 @@ export default function questionsReducer(state = initialState, action) {
 		case UPDATE_QUESTION:
 			newState.allQuestions[action.payload.id] = action.payload
 			return {...newState}
+		case GET_QUESTION:
+			return { ...state, singleQuestion: { ...action.payload } }
 		default:
 			return state;
 	}
