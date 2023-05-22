@@ -26,11 +26,10 @@ export default function QuestionDetail() {
     if (!question.answers) {
         return null
     }
-    console.log(question)
 
 
     return <div className="page">
         <QuestionCard question={question}></QuestionCard>
-        {question.answers.map(answer => <><p>{answer.text}</p><br></br></>)}
+        {question.answers.map(answer => <div key={answer.id}><p >{answer.text}</p><br></br></div>)}
     </div>;
 }
