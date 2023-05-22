@@ -4,13 +4,18 @@ import { getQuestionsThunk } from "../../../store/question";
 import "./FeedPage.css";
 import { useModal } from "../../../context/Modal";
 // import OpenModalButton from "../../OpenModalButton";
-import { deleteQuestionThunk, updateQuestionThunk } from "../../../store/question";
+import { NavLink } from "react-router-dom";
+import {
+    deleteQuestionThunk,
+    updateQuestionThunk,
+} from "../../../store/question";
 import QuestionCard from "../../cards/QuestionCard";
+import CardContainer from "../../cards/CardContainer";
 
-function Test({question}) {
+function Test({ question }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const [text, setText] = useState('')
+    const [text, setText] = useState("");
 
     async function handleUpdateQuestion(e, question) {
         e.preventDefault();
@@ -20,19 +25,15 @@ function Test({question}) {
     }
 
     return (
-        <form
-        onSubmit={(e) =>
-            handleUpdateQuestion(e, question)
-        }
-    >
-        <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-        ></input>
-        <button>UPDATE?</button>
-    </form>
-    )
+        <form onSubmit={(e) => handleUpdateQuestion(e, question)}>
+            <input
+                type="text"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+            ></input>
+            <button>UPDATE?</button>
+        </form>
+    );
 }
 
 export default function FeedPage() {
@@ -42,8 +43,6 @@ export default function FeedPage() {
     );
     const sessionUser = useSelector((state) => state.session.user);
     const { closeModal } = useModal();
-
-
 
     useEffect(() => {
         dispatch(getQuestionsThunk());
@@ -55,11 +54,15 @@ export default function FeedPage() {
         closeModal();
     }
 
-
-
     return (
         <div className="feed page">
-            {questions.map(question => <QuestionCard key={question.id} question={question}/>)}
+            {questions.map((question) => (
+                <NavLink key={question.id} to={`/questions/${question.id}`}>
+                    <CardContainer
+                        component={<QuestionCard question={question} />}
+                    />
+                </NavLink>
+            ))}
             {/* {questions.map((question) => (
                 <div key={question.id}>
                     {question.text}
@@ -94,9 +97,6 @@ export default function FeedPage() {
                     )}
                 </div>
             ))} */}
-
-
-
         </div>
     );
 }
