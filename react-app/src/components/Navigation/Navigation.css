@@ -49,3 +49,22 @@
 .fa-user-circle {
   color: #ffffff;
 }
+
+button.add-question {
+  color: white;
+  border-radius: 20px;
+
+}
+
+button.profile {
+  border: none;
+  color: #ffffff;
+}
+
+.profile > i {
+  padding-top: 10px;
+}
+
+.add-question > i {
+  padding-left: 10px;
+}

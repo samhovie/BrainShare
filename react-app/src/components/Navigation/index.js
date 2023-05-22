@@ -9,8 +9,8 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className="navigation-container flex justify-center">
-            <ul className="navigation flex align-center space-between">
-                <li>
+            <ul className="navigation flex align-center flex-end">
+                <li className="justify-start">
                     <NavLink exact to="/">
                         <div className="flex align-center">
                             <img
@@ -21,12 +21,19 @@ function Navigation({ isLoaded }) {
                         </div>
                     </NavLink>
                 </li>
-                {isLoaded && (
-                    <li className="flex">
-                        <input className="search" placeholder="Search"></input>
-                        <ProfileButton user={sessionUser} />
-                    </li>
-                )}
+
+                <li className="flex">
+                    <input className="search" placeholder="Search"></input>
+                    <ProfileButton user={sessionUser} />
+                </li>
+
+                <li>
+                <button className="add-question">
+                        Add a question <i className="fa-solid fa-pencil"></i>
+                    </button>
+                </li>
+
+
             </ul>
         </div>
     );
