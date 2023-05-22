@@ -6,14 +6,12 @@ from sqlalchemy.sql import text
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
+    db.session.add(demo)
 
     for _ in range(10):
         user = User(
             username=fake.name(), email=fake.email(), password='password')
         db.session.add(user)
-
-
-    db.session.add(demo)
     db.session.commit()
 
 

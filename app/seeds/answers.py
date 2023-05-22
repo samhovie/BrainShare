@@ -1,18 +1,15 @@
-from app.models import db, Question, environment, SCHEMA, fake
+from app.models import db, Answer, environment, SCHEMA, fake
 from sqlalchemy.sql import text
 import random
 
-# Adds a demo user, you can add other users here if you want
-def seed_questions():
-    # fake.displayName()
-    demo = Question(user_id=1, text=fake.sentence()[:-1] + '?')
 
-    for _ in range(100):
-        question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
-        db.session.add(question)
+def seed_answers():
 
+    for _ in range(200):
+        answer = Answer(user_id=random.randint(1, 11), question_id=random.randint(
+            1, 100), text=fake.paragraph(nb_sentences=5))
+        db.session.add(answer)
 
-    db.session.add(demo)
     db.session.commit()
 
 
@@ -22,10 +19,11 @@ def seed_questions():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_questions():
+def undo_answers():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.questions RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.answers RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM questions"))
+        db.session.execute(text("DELETE FROM answers"))
 
     db.session.commit()

@@ -34,7 +34,11 @@ function App() {
                     <Route path="/signup">
                         <SignupFormPage />
                     </Route>
+                    <Route path="/questions/:id">
+                        <SignupFormPage />
+                    </Route>
                 </Switch>
+
             )}
         </>
     );
