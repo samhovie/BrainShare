@@ -23,18 +23,14 @@ export default function QuestionDetail() {
         dispatch(getQuestionThunk(id))
     }, [dispatch, id])
 
-    // console.log(question)
-
-
-
+    if (!question.answers) {
+        return null
+    }
+    console.log(question)
 
 
     return <div className="page">
         <QuestionCard question={question}></QuestionCard>
-        {/* {question.answers.map((answer) => {
-            <>
-            <p>{answer.text}</p>
-            </>
-        })} */}
+        {question.answers.map(answer => <><p>{answer.text}</p><br></br></>)}
     </div>;
 }
