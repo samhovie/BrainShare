@@ -12,7 +12,7 @@ class Answer(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('questions.id')), nullable=False)
-    text = db.Column(db.String(255), nullable=False)
+    text = db.Column(db.String(500), nullable=False)
 
     user = db.relationship('User', back_populates='answers')
 
