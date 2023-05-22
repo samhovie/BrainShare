@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuestionsThunk } from "../../store/question";
+import { getQuestionsThunk } from "../../../store/question";
 import "./FeedPage.css";
-import { useModal } from "../../context/Modal";
-import OpenModalButton from "../OpenModalButton";
-import { deleteQuestionThunk, updateQuestionThunk } from "../../store/question";
+import { useModal } from "../../../context/Modal";
+import OpenModalButton from "../../OpenModalButton";
+import { deleteQuestionThunk, updateQuestionThunk } from "../../../store/question";
+import QuestionCard from "../../cards/QuestionCard";
 
 function Test({question}) {
     const dispatch = useDispatch();
@@ -61,7 +62,8 @@ export default function FeedPage() {
 
     return (
         <div className="feed page">
-            {questions.map((question) => (
+            {questions.map(question => <QuestionCard key={question.id} question={question}/>)}
+            {/* {questions.map((question) => (
                 <div key={question.id}>
                     {question.text}
                     {question.user_id === sessionUser.id && (
@@ -94,7 +96,10 @@ export default function FeedPage() {
                         </>
                     )}
                 </div>
-            ))}
+            ))} */}
+
+
+
         </div>
     );
 }

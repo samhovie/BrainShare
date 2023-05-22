@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./QuestionCard.css";
+import { useSelector } from "react-redux";
 
-export default function QuestionCard() {
+
+export default function QuestionCard({ question }) {
+
+
+    const sessionUser = useSelector((state) => state.session.user);
+    console.log(question)
+
+
     return (
         <>
-            <div id="nav-space"></div>
             <div className=" card card-container">
                 <div className=" card flex space-between">
                     <div className="flex">
@@ -30,7 +37,7 @@ export default function QuestionCard() {
                     </div>
 
                     {/* <div className=""> */}
-                        <button className="delete flex center"><i class="fa-solid fa-xmark fa-lg"></i></button>
+                        <button className="delete flex center"><i className="fa-solid fa-xmark fa-lg"></i></button>
 
                     {/* </div> */}
                 </div>

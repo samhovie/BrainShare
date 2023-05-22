@@ -89,7 +89,10 @@ ul {
 }
 
 .page {
+    width: 100%;
     padding-top: 70px;
+    padding-left: 18%;
+    padding-right: 15%;
 }
 
 .no-margin {

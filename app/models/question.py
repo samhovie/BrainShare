@@ -12,9 +12,16 @@ class Question(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     text = db.Column(db.String(255), nullable=False)
 
+    user = db.relationship('User', back_populates='questions')
+
+
+
+
+
     def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'text': self.text
+            'text': self.text,
+            'user': self.user.to_dict_no_question()
         }

@@ -39,7 +39,6 @@ def update_question(id):
     """
     form = QuestionForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('HHHHHHHHHHHH', form.data)
     if form.validate_on_submit():
         q = Question.query.get(id)
         if q.user_id == current_user.id:

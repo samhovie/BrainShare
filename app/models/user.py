@@ -14,6 +14,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    questions = db.relationship('Question', back_populates = 'user', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
@@ -26,6 +28,13 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }
+
+    def to_dict_no_question(self):
         return {
             'id': self.id,
             'username': self.username,

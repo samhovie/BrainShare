@@ -6,9 +6,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import { useSelector } from "react-redux";
-import SplashPage from "./components/SplashPage";
-import FeedPage from "./components/FeedPage";
-import QuestionCard from "./components/QuestionCard";
+import SplashPage from "./components/pages/SplashPage";
+import FeedPage from "./components/pages/FeedPage";
+import QuestionCard from "./components/cards/QuestionCard";
+import QuestinDetailPage from "./components/pages/QuestionDetailPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -25,8 +26,7 @@ function App() {
             {isLoaded && (
                 <Switch>
                     <Route path="/">
-                        {/* {!sessionUser ? <SplashPage /> : <FeedPage/>} */}
-                        <QuestionCard/>
+                        {!sessionUser ? <SplashPage /> : <FeedPage/>}
                     </Route>
                     <Route path="/login">
                         <LoginFormPage />
