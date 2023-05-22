@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getQuestionsThunk } from "../../../store/question";
 import "./FeedPage.css";
 import { useModal } from "../../../context/Modal";
-import OpenModalButton from "../../OpenModalButton";
+// import OpenModalButton from "../../OpenModalButton";
 import { deleteQuestionThunk, updateQuestionThunk } from "../../../store/question";
 import QuestionCard from "../../cards/QuestionCard";
 

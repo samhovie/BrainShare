@@ -14,6 +14,8 @@ class Question(db.Model):
 
     user = db.relationship('User', back_populates='questions')
 
+    answers = db.relationship('Answer', cascade='all, delete-orphan')
+
 
 
 
@@ -23,5 +25,6 @@ class Question(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'text': self.text,
-            'user': self.user.to_dict_no_question_answer()
+            'user': self.user.to_dict_no_question_answer(),
+            'answers': [answer.to_dict() for answer in self.answers]
         }

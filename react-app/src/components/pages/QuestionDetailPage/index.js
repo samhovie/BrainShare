@@ -14,6 +14,7 @@ import { getQuestionThunk } from "../../../store/question";
 
 export default function QuestionDetail() {
     const question = useSelector((state) => state.questions.singleQuestion)
+    // const answers = useSelector((state) => state.answers.allAnswers)
     const { id } = useParams();
 
     const dispatch = useDispatch();
@@ -22,11 +23,18 @@ export default function QuestionDetail() {
         dispatch(getQuestionThunk(id))
     }, [dispatch, id])
 
+    // console.log(question)
+
 
 
 
 
     return <div className="page">
         <QuestionCard question={question}></QuestionCard>
+        {/* {question.answers.map((answer) => {
+            <>
+            <p>{answer.text}</p>
+            </>
+        })} */}
     </div>;
 }

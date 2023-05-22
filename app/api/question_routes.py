@@ -59,3 +59,13 @@ def get_question(id):
     """
     q = Question.query.get(id)
     return {'question': q.to_dict()}
+
+
+# @question_routes.route('/<int:id>/answers')
+# # @login_required
+# def get_answers(id):
+#     """
+#     Get a question by id
+#     """
+#     q = Question.query.get(id)
+#     return {'question': q.to_dict()}

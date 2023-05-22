@@ -1,6 +1,6 @@
 import React from "react";
 import "./QuestionCard.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function QuestionCard({ question }) {

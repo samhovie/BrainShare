@@ -41,6 +41,7 @@ export const getQuestionThunk = (id) => async (dispatch) => {
 	const response = await fetch(`/api/questions/${id}`)
 	if (response.ok) {
 		const data = await response.json();
+		console.log('HEY', data)
 		if (data.errors) {
             return data.errors;
         }
@@ -60,7 +61,6 @@ export const deleteQuestionThunk = (id) => async (dispatch) => {
 };
 
 export const updateQuestionThunk = (question) => async (dispatch) => {
-	console.log(JSON.stringify({ text: question.text}))
 	const response = await fetch(`/api/questions/${question.id}`, {
 		method: "PUT",
 		headers: {

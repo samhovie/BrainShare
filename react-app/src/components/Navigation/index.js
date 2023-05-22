@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
                         <div className="flex align-center">
                             <img
                                 className="icon"
+                                alt="icon-img"
                                 src="https://livebnbbucket.s3.amazonaws.com/favicon.svg"
                             ></img>
                             <h1 className="main-title">SoundForum</h1>
