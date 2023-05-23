@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Question
-from app.forms import QuestionForm
+from app.models import db, Question, Answer
+from app.forms import QuestionForm, AnswerForm
 
 question_routes = Blueprint('questions', __name__)
 
@@ -62,11 +62,39 @@ def get_question(id):
     return {'question': q.to_dict()}
 
 
-# @question_routes.route('/<int:id>/answers')
-# # @login_required
-# def get_answers(id):
-#     """
-#     Get a question by id
-#     """
-#     q = Question.query.get(id)
-#     return {'question': q.to_dict()}
+@question_routes.route('/<int:id>/answers', methods=['PUT'])
+# @login_required
+def update_answer(id):
+    """
+    Update a question by id and returns success
+    """
+    form = AnswerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        a = Answer.query.get(id)
+        if not a:
+            return {"errors": "answer doesn't exist"}
+        if a.user_id == current_user.id:
+            a.text = form.data['text']
+            db.session.commit()
+            return {'answer': a.to_dict()}
+        else:
+            return {"errors": 'nacho question'}
+    return {'errors': 'validation error'}
+
+
+@question_routes.route('/<int:id>/answers', methods=['DELETE'])
+# @login_required
+def delete_answer(id):
+    """
+    Delete a question by id and returns success
+    """
+
+    a = Answer.query.get(id)
+
+    if a.user_id == current_user.id:
+        db.session.delete(a)
+        db.session.commit()
+        return {'success': 'good job'}
+    else:
+        return {"errors": 'nacho question'}

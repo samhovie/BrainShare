@@ -5,11 +5,15 @@ import random
 
 def seed_answers():
 
-    for _ in range(20):
+    for _ in range(100):
         answer = Answer(user_id=random.randint(1, 11), question_id=random.randint(
             1, 100), text=fake.paragraph(nb_sentences=5))
         db.session.add(answer)
 
+
+    db.session.add(Answer(user_id=11, question_id=1, text=fake.paragraph(nb_sentences=5)))
+    db.session.add(Answer(user_id=11, question_id=3, text=fake.paragraph(nb_sentences=5)))
+    db.session.add(Answer(user_id=11, question_id=4, text=fake.paragraph(nb_sentences=5)))
     db.session.commit()
 
 

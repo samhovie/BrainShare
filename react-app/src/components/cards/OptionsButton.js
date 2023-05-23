@@ -73,7 +73,7 @@ function OptionsButton({ question }) {
 
     return (
         <>
-            <button className="options" onClick={openMenu}>
+            <button className="options border-none" onClick={openMenu}>
                 {/* <i className="fa-regular fa-circle-user fa-xl" ></i> */}
                 <i className="fa-solid fa-ellipsis fa-lg"></i>
             </button>
@@ -91,6 +91,7 @@ function OptionsButton({ question }) {
                         modalComponent={
                             <div>
                                 <button
+
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleDeleteQuestion(question.id);

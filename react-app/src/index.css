@@ -114,3 +114,7 @@ ul {
     font-size: 1.17rem;
     font-weight: bold;
 }
+
+.border-none {
+    border: none;
+}

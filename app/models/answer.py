@@ -21,5 +21,6 @@ class Answer(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'text': self.text,
+            'question_id': self.question_id,
             'user': self.user.to_dict_no_question_answer()
         }

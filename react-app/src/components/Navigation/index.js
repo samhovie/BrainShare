@@ -66,6 +66,7 @@ export default Navigation;
                             />
                             <OpenModalButton
                                 className="update-question"
+                                onItemClick={closeMenu}
                                 modalComponent={
                                     <Test question={question} />
 
