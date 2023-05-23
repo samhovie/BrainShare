@@ -8,7 +8,6 @@ export default function CardContainer({ Card }) {
     return (
         <>
             <div className=" card card-container">
-                <CardHeader />
                 <Card />
             </div>
         </>

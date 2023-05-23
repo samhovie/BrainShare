@@ -7,8 +7,7 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
 
-    return (
-        <div className="navigation-container flex justify-center">
+    return (<div className="navigation-container flex justify-center">
             <ul className="navigation flex align-center flex-end">
                 <li className="justify-start">
                     <NavLink exact to="/">
@@ -37,7 +36,43 @@ function Navigation({ isLoaded }) {
 
             </ul>
         </div>
-    );
+    )
 }
 
 export default Navigation;
+
+
+            {/* {questions.map((question) => (
+                <div key={question.id}>
+                    {question.text}
+                    {question.user_id === sessionUser.id && (
+                        <>
+                            <OpenModalButton
+                                className="delete-question"
+                                modalComponent={
+                                    <div>
+                                        <button
+                                            onClick={(e) =>
+                                                handleDeleteQuestion(
+                                                    question.id
+                                                )
+                                            }
+                                        >
+                                            DELETE?
+                                        </button>
+                                    </div>
+                                }
+                                buttonText="Delete"
+                            />
+                            <OpenModalButton
+                                className="update-question"
+                                modalComponent={
+                                    <Test question={question} />
+
+                                }
+                                buttonText="Update"
+                            />
+                        </>
+                    )}
+                </div>
+            ))} */}

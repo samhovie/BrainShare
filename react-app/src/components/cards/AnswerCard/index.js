@@ -2,10 +2,12 @@ import React from "react";
 import "./AnswerCard.css";
 // import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import CardHeader from "../CardContainer/CardHeader";
 
 export default function AnswerCard({ answer }) {
     return (
         <>
+        <CardHeader user={answer.user} />
             <div>
                 <p>
                     I went to this place along the river where there is a lot of

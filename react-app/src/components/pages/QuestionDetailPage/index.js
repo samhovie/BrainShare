@@ -72,13 +72,13 @@ export default function QuestionDetail() {
         <div className="page">
             <CardContainer
                 key={question.id}
-                Card={() => <QuestionCard obj={question} />}
+                Card={() => <QuestionCard question={question} />}
             />
 
             {question.answers.map((answer) => (
                 <CardContainer
                     key={answer.id}
-                    Card={() => <AnswerCard obj={answer} />}
+                    Card={() => <AnswerCard answer={answer} />}
                 />
             ))}
         </div>
