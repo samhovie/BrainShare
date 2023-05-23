@@ -8,7 +8,7 @@ export default function QuestionCard({ question }) {
         <>
             <div>
                 <p className="title-lg">
-                    What is the last place that you went to this year?
+                   {question.text}
                 </p>
             </div>
 

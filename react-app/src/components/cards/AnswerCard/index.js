@@ -25,3 +25,34 @@ export default function AnswerCard({ answer }) {
         </>
     );
 }
+
+
+{/* {question.answers.map((answer) => (
+    <div key={answer.id}>
+        {answer.text}
+        {answer.user_id === sessionUser.id && (
+            <>
+                <OpenModalButton
+                    className="delete-question"
+                    modalComponent={
+                        <div>
+                            <button
+                                onClick={(e) =>
+                                    handleDeleteAnswer(answer.id)
+                                }
+                            >
+                                DELETE?
+                            </button>
+                        </div>
+                    }
+                    buttonText="Delete"
+                />
+                <OpenModalButton
+                    className="update-question"
+                    modalComponent={<TestAnswer answer={answer} />}
+                    buttonText="Update"
+                />
+            </>
+        )}
+    </div>
+))} */}

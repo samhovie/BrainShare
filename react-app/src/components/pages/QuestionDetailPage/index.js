@@ -11,7 +11,6 @@ import OpenModalButton from "../../OpenModalButton";
 import CardContainer from "../../cards/CardContainer";
 import AnswerCard from "../../cards/AnswerCard";
 
-
 // question card with bigger font
 // for now: q only title a only text
 // question card with diff buttons and no title
@@ -71,43 +70,11 @@ export default function QuestionDetail() {
 
     return (
         <div className="page">
-            <CardContainer
-                component={<QuestionCard question={question}/>}
-            />
+            <CardContainer component={<QuestionCard question={question} />} />
 
-{/* {question.answers.map((answer) => (<p>{answer.text}</p>))} */}
-{question.answers.map((answer) => (<CardContainer component={<AnswerCard answer={answer}/>}/>))}
-
-
-            {/* {question.answers.map((answer) => (
-                <div key={answer.id}>
-                    {answer.text}
-                    {answer.user_id === sessionUser.id && (
-                        <>
-                            <OpenModalButton
-                                className="delete-question"
-                                modalComponent={
-                                    <div>
-                                        <button
-                                            onClick={(e) =>
-                                                handleDeleteAnswer(answer.id)
-                                            }
-                                        >
-                                            DELETE?
-                                        </button>
-                                    </div>
-                                }
-                                buttonText="Delete"
-                            />
-                            <OpenModalButton
-                                className="update-question"
-                                modalComponent={<TestAnswer answer={answer} />}
-                                buttonText="Update"
-                            />
-                        </>
-                    )}
-                </div>
-            ))} */}
+            {question.answers.map((answer) => (
+                <CardContainer component={<AnswerCard answer={answer} />} />
+            ))}
         </div>
     );
 }
