@@ -3,12 +3,12 @@ import "./QuestionCard.css";
 // import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-export default function QuestionCard({ question }) {
+export default function QuestionCard({ obj }) {
     return (
         <>
             <div>
                 <p className="title-lg">
-                   {question.text}
+                   {obj.text}
                 </p>
             </div>
 

@@ -4,14 +4,14 @@ import "./CardContainer.css";
 import { NavLink } from "react-router-dom";
 import CardHeader from "./CardHeader";
 
-export default function CardContainer({ component  }) {
+export default function CardContainer({ obj, Card  }) {
     return (
         <>
             <div className=" card card-container">
 
                 <CardHeader/>
 
-                {component}
+                <Card obj={obj}/>
             </div>
         </>
     );
