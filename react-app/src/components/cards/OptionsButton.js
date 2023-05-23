@@ -4,20 +4,46 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import {deleteQuestionThunk} from '../../store/question'
-import { getQuestionsThunk } from "../../store/question";
-import './Card.css'
+import { deleteQuestionThunk, getQuestionsThunk, updateQuestionThunk  } from "../../store/question";
+import "./Card.css";
 import { useModal } from "../../context/Modal";
+
+function Test({question}) {
+    const dispatch = useDispatch();
+    const { closeModal } = useModal();
+    const [text, setText] = useState('')
+
+    async function handleUpdateQuestion(e, question) {
+        e.preventDefault();
+        await dispatch(updateQuestionThunk({ id: question.id, text: text }));
+        await dispatch(getQuestionsThunk());
+        closeModal();
+    }
+
+    return (
+        <form
+        onSubmit={(e) =>
+            handleUpdateQuestion(e, question)
+        }
+    >
+        <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+        ></input>
+        <button>UPDATE?</button>
+    </form>
+    )
+}
 
 function OptionsButton({ question }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
-    const {closeModal} = useModal()
-
+    const { closeModal } = useModal();
 
     const openMenu = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (showMenu) return;
         setShowMenu(true);
     };
@@ -36,20 +62,11 @@ function OptionsButton({ question }) {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-    //   const handleLogout = (e) => {
-    //     e.preventDefault();
-    //     dispatch(logout());
-    //   };
-
     async function handleDeleteQuestion(id) {
-
-        // e.preventDefault();
-        // console.log('hello')
         await dispatch(deleteQuestionThunk(id));
         await dispatch(getQuestionsThunk());
         closeModal();
     }
-
 
     const ulClassName = "options-dropdown" + (showMenu ? "" : " hidden");
     const closeMenu = () => setShowMenu(false);
@@ -74,12 +91,10 @@ function OptionsButton({ question }) {
                         modalComponent={
                             <div>
                                 <button
-                                    onClick={(e) =>{
-
+                                    onClick={(e) => {
                                         e.preventDefault();
-                                        console.log('hi')
-                                        handleDeleteQuestion(question.id)}
-                                    }
+                                        handleDeleteQuestion(question.id);
+                                    }}
                                 >
                                     DELETE?
                                 </button>
@@ -87,12 +102,12 @@ function OptionsButton({ question }) {
                         }
                         buttonText="Delete"
                     />
-                    {/*
-            <OpenModalButton
-              buttonText="Update"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            /> */}
+                    <OpenModalButton
+                        className="update-question"
+                        onItemClick={closeMenu}
+                        modalComponent={<Test question={question} />}
+                        buttonText="Update"
+                    />
                 </>
             </ul>
         </>
