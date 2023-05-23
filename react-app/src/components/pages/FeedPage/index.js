@@ -59,7 +59,7 @@ export default function FeedPage() {
             {questions.map((question) => (
                 <NavLink key={question.id} to={`/questions/${question.id}`}>
                     <CardContainer
-                        Card={() => (<QuestionCard obj={question}/>)}
+                        Card={() => <QuestionCard obj={question} />}
                     />
                 </NavLink>
             ))}

@@ -7,9 +7,7 @@ export default function QuestionCard({ obj }) {
     return (
         <>
             <div>
-                <p className="title-lg">
-                   {obj.text}
-                </p>
+                <p className="title-lg">{obj.text}</p>
             </div>
 
             <div className="card card-button-row">
