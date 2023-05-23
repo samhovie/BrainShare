@@ -63,40 +63,6 @@ export default function FeedPage() {
                     />
                 </NavLink>
             ))}
-            {/* {questions.map((question) => (
-                <div key={question.id}>
-                    {question.text}
-                    {question.user_id === sessionUser.id && (
-                        <>
-                            <OpenModalButton
-                                className="delete-question"
-                                modalComponent={
-                                    <div>
-                                        <button
-                                            onClick={(e) =>
-                                                handleDeleteQuestion(
-                                                    question.id
-                                                )
-                                            }
-                                        >
-                                            DELETE?
-                                        </button>
-                                    </div>
-                                }
-                                buttonText="Delete"
-                            />
-                            <OpenModalButton
-                                className="update-question"
-                                modalComponent={
-                                    <Test question={question} />
-
-                                }
-                                buttonText="Update"
-                            />
-                        </>
-                    )}
-                </div>
-            ))} */}
         </div>
     );
 }

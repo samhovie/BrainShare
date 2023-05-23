@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./QuestionDetailPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -8,30 +8,34 @@ import { useModal } from "../../../context/Modal";
 import { updateAnswerThunk } from "../../../store/answer";
 import { deleteAnswerThunk } from "../../../store/answer";
 import OpenModalButton from "../../OpenModalButton";
+import CardContainer from "../../cards/CardContainer";
+import AnswerCard from "../../cards/AnswerCard";
 
 
-    // question card with bigger font
-        // for now: q only title a only text
-    // question card with diff buttons and no title
-    // upvote and comment
-    function TestAnswer({answer}) {
-        const dispatch = useDispatch();
-        const { closeModal } = useModal();
-        const [text, setText] = useState('')
+// question card with bigger font
+// for now: q only title a only text
+// question card with diff buttons and no title
+// upvote and comment
+function TestAnswer({ answer }) {
+    const dispatch = useDispatch();
+    const { closeModal } = useModal();
+    const [text, setText] = useState("");
 
-        async function handleUpdateAnswer(e, answer) {
-            e.preventDefault();
-            await dispatch(updateAnswerThunk({ id: answer.id, question_id: answer.question_id,  text: text }));
-            await dispatch(getQuestionThunk(answer.question_id));
-            closeModal();
-        }
+    async function handleUpdateAnswer(e, answer) {
+        e.preventDefault();
+        await dispatch(
+            updateAnswerThunk({
+                id: answer.id,
+                question_id: answer.question_id,
+                text: text,
+            })
+        );
+        await dispatch(getQuestionThunk(answer.question_id));
+        closeModal();
+    }
 
-        return (
-            <form
-            onSubmit={(e) =>
-                handleUpdateAnswer(e, answer)
-            }
-        >
+    return (
+        <form onSubmit={(e) => handleUpdateAnswer(e, answer)}>
             <input
                 type="text"
                 value={text}
@@ -39,24 +43,24 @@ import OpenModalButton from "../../OpenModalButton";
             ></input>
             <button>UPDATE?</button>
         </form>
-        )
-    }
+    );
+}
 
 export default function QuestionDetail() {
-    const question = useSelector((state) => state.questions.singleQuestion)
+    const question = useSelector((state) => state.questions.singleQuestion);
     // const answers = useSelector((state) => state.answers.allAnswers)
-    const sessionUser = useSelector((state) => state.session.user)
+    const sessionUser = useSelector((state) => state.session.user);
     const { id } = useParams();
     const { closeModal } = useModal();
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getQuestionThunk(id))
-    }, [dispatch, id])
+        dispatch(getQuestionThunk(id));
+    }, [dispatch, id]);
 
     if (!question.answers) {
-        return null
+        return null;
     }
 
     async function handleDeleteAnswer(answer) {
@@ -65,13 +69,17 @@ export default function QuestionDetail() {
         closeModal();
     }
 
+    return (
+        <div className="page">
+            <CardContainer
+                component={<QuestionCard question={question}/>}
+            />
+
+{/* {question.answers.map((answer) => (<p>{answer.text}</p>))} */}
+{question.answers.map((answer) => (<CardContainer component={<AnswerCard answer={answer}/>}/>))}
 
 
-
-    return <div className="page">
-        <QuestionCard question={question}></QuestionCard>
-        {/* {question.answers.map(answer => <div key={answer.id}><p >{answer.text}</p><br></br></div>)} */}
-                    {question.answers.map((answer) => (
+            {/* {question.answers.map((answer) => (
                 <div key={answer.id}>
                     {answer.text}
                     {answer.user_id === sessionUser.id && (
@@ -82,9 +90,7 @@ export default function QuestionDetail() {
                                     <div>
                                         <button
                                             onClick={(e) =>
-                                                handleDeleteAnswer(
-                                                    answer.id
-                                                )
+                                                handleDeleteAnswer(answer.id)
                                             }
                                         >
                                             DELETE?
@@ -95,16 +101,13 @@ export default function QuestionDetail() {
                             />
                             <OpenModalButton
                                 className="update-question"
-                                modalComponent={
-                                    <TestAnswer answer={answer} />
-
-                                }
+                                modalComponent={<TestAnswer answer={answer} />}
                                 buttonText="Update"
                             />
                         </>
                     )}
                 </div>
-            ))}
-
-    </div>;
+            ))} */}
+        </div>
+    );
 }
