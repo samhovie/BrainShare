@@ -2,7 +2,7 @@ import React from "react";
 import "./SplashPage.css";
 import LoginFormPage from "../../LoginFormPage";
 import SignupFormModal from "../../SignupFormModal";
-import OpenModalButton from "../../OpenModalButton";
+import OpenModalButton from "../../modals/OpenModalButton";
 
 export default function SplashPage() {
     return (

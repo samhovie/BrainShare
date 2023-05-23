@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
+import OpenModalButton from "../modals/OpenModalButton";
 
-function Navigation({ isLoaded }) {
+export default function Navigation({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
 
     return (<div className="navigation-container flex justify-center">
@@ -28,9 +29,15 @@ function Navigation({ isLoaded }) {
                 </li>
 
                 <li>
-                <button className="add-question">
+                {/* <button className="add-question">
                         Add a question <i className="fa-solid fa-pencil"></i>
-                    </button>
+                    </button> */}
+
+                    <OpenModalButton
+                    modalClass="add-question"
+                    modalComponent={<h1>hello</h1>}
+                    buttonText="Add a question"
+                />
                 </li>
 
 
@@ -38,42 +45,3 @@ function Navigation({ isLoaded }) {
         </div>
     )
 }
-
-export default Navigation;
-
-
-            {/* {questions.map((question) => (
-                <div key={question.id}>
-                    {question.text}
-                    {question.user_id === sessionUser.id && (
-                        <>
-                            <OpenModalButton
-                                className="delete-question"
-                                modalComponent={
-                                    <div>
-                                        <button
-                                            onClick={(e) =>
-                                                handleDeleteQuestion(
-                                                    question.id
-                                                )
-                                            }
-                                        >
-                                            DELETE?
-                                        </button>
-                                    </div>
-                                }
-                                buttonText="Delete"
-                            />
-                            <OpenModalButton
-                                className="update-question"
-                                onItemClick={closeMenu}
-                                modalComponent={
-                                    <Test question={question} />
-
-                                }
-                                buttonText="Update"
-                            />
-                        </>
-                    )}
-                </div>
-            ))} */}

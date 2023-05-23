@@ -49,8 +49,13 @@
 .fa-user-circle {
   color: #ffffff;
 }
-
+/*
 button.add-question {
+  color: white;
+  border-radius: 20px;
+
+} */
+button.modal-button_add-question {
   color: white;
   border-radius: 20px;
 

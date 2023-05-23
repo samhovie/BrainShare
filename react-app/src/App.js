@@ -28,12 +28,12 @@ function App() {
                     <Route exact path="/">
                         {!sessionUser ? <SplashPage /> : <FeedPage />}
                     </Route>
-                    <Route path="/login">
+                    {/* <Route path="/login">
                         <LoginFormPage />
                     </Route>
                     <Route path="/signup">
                         <SignupFormPage />
-                    </Route>
+                    </Route> */}
                     <Route path="/questions/:id">
                         <QuestionDetailPage />
                     </Route>

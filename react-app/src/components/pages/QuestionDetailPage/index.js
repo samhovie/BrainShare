@@ -7,7 +7,7 @@ import { getQuestionThunk } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
 import { updateAnswerThunk } from "../../../store/answer";
 import { deleteAnswerThunk } from "../../../store/answer";
-import OpenModalButton from "../../OpenModalButton";
+import OpenModalButton from "../../modals/OpenModalButton";
 import CardContainer from "../../cards/CardContainer";
 import AnswerCard from "../../cards/AnswerCard";
 

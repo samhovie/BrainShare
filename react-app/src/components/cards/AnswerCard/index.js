@@ -3,7 +3,7 @@ import "./AnswerCard.css";
 // import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CardHeader from "../CardContainer/CardHeader";
-import OpenModalButton from "../../OpenModalButton";
+import OpenModalButton from "../../modals/OpenModalButton";
 import {
     deleteAnswerThunk,
     updateAnswerThunk,
