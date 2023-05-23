@@ -59,7 +59,7 @@ export default function FeedPage() {
             {questions.map((question) => (
 
                     <CardContainer key={question.id}
-                        Card={() => <QuestionCard obj={question} />}
+                        Card={() => <QuestionCard question={question} />}
                     />
             ))}
         </div>
