@@ -70,11 +70,11 @@ export default function QuestionDetail() {
 
     return (
         <div className="page">
-            {/* <CardContainer key={question.id}  component={<QuestionCard question={question} />} /> */}
+            <CardContainer key={question.id} Card={() => (<QuestionCard obj={question}/>)} />
 
-            {/* {question.answers.map((answer) => (
-                <CardContainer key={answer.id} component={<AnswerCard answer={answer} />} />
-            ))} */}
+            {question.answers.map((answer) => (
+                <CardContainer key={answer.id} Card={() => (<AnswerCard obj={answer}/>)}  />
+            ))}
         </div>
     );
 }
