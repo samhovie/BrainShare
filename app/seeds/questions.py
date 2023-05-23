@@ -7,7 +7,7 @@ def seed_questions():
     # fake.displayName()
     demo = Question(user_id=1, text=fake.sentence()[:-1] + '?')
 
-    for _ in range(100):
+    for _ in range(10):
         question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
         db.session.add(question)
 

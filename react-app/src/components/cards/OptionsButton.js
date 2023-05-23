@@ -4,14 +4,17 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import deleteQuestionThunk from '../../store/question'
+import {deleteQuestionThunk} from '../../store/question'
 import { getQuestionsThunk } from "../../store/question";
 import './Card.css'
+import { useModal } from "../../context/Modal";
 
 function OptionsButton({ question }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
+    const {closeModal} = useModal()
+
 
     const openMenu = (e) => {
         e.preventDefault()
@@ -23,7 +26,7 @@ function OptionsButton({ question }) {
         if (!showMenu) return;
 
         const closeMenu = (e) => {
-            if (!ulRef.current.contains(e.target)) {
+            if (ulRef.current && !ulRef.current.contains(e.target)) {
                 setShowMenu(false);
             }
         };
@@ -38,11 +41,13 @@ function OptionsButton({ question }) {
     //     dispatch(logout());
     //   };
 
-    async function handleDeleteQuestion(e, id) {
-        e.preventDefault();
+    async function handleDeleteQuestion(id) {
+
+        // e.preventDefault();
+        // console.log('hello')
         await dispatch(deleteQuestionThunk(id));
         await dispatch(getQuestionsThunk());
-        // closeModal();
+        closeModal();
     }
 
 
@@ -69,8 +74,11 @@ function OptionsButton({ question }) {
                         modalComponent={
                             <div>
                                 <button
-                                    onClick={(e) =>
-                                        handleDeleteQuestion(question.id)
+                                    onClick={(e) =>{
+
+                                        e.preventDefault();
+                                        console.log('hi')
+                                        handleDeleteQuestion(question.id)}
                                     }
                                 >
                                     DELETE?

@@ -23,7 +23,9 @@ def delete_question(id):
     """
 
     q = Question.query.get(id)
+
     if q.user_id == current_user.id:
+        print("HEESAGFSGWEGARGA", q.text)
         db.session.delete(q)
         db.session.commit()
         return {'success': 'good job'}

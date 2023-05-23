@@ -4,9 +4,10 @@ import "./QuestionCard.css";
 import { NavLink } from "react-router-dom";
 import CardHeader from "../CardContainer/CardHeader";
 import OptionsButton from "../OptionsButton";
-
+import { useSelector } from "react-redux";
 
 export default function QuestionCard({ question }) {
+    const sessionUser = useSelector((state) => state.session.user);
     return (
         <>
             <NavLink to={`/questions/${question.id}`}>
@@ -25,10 +26,9 @@ export default function QuestionCard({ question }) {
                     onClick={openOptionsMenu}>
                         <i className="fa-solid fa-ellipsis fa-lg"></i>
                     </button> */}
-
-                    <OptionsButton question={question}/>
-
-
+                    {sessionUser.id === question.user.id && (
+                        <OptionsButton question={question} />
+                    )}
                 </div>
             </NavLink>
         </>

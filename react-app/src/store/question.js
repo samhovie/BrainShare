@@ -53,6 +53,7 @@ export const deleteQuestionThunk = (id) => async (dispatch) => {
 		method: "DELETE"
 	  });
 	if (response.ok) {
+		console.log(response)
 		const data = await response.json()
 		if(data.errors) return data.errors;
 		return dispatch(deleteQuestionAction(id));
