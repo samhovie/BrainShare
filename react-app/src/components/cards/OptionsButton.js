@@ -1,41 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
 import OpenModalButton from "../modals/OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 import { deleteQuestionThunk, getQuestionsThunk, updateQuestionThunk  } from "../../store/question";
 import "./Card.css";
 import { useModal } from "../../context/Modal";
 import UpdateQuestionModal from "../modals/UpdateQuestionModal";
 
-// function Test({question}) {
-//     const dispatch = useDispatch();
-//     const { closeModal } = useModal();
-//     const [text, setText] = useState('')
-
-//     async function handleUpdateQuestion(e, question) {
-//         e.preventDefault();
-//         await dispatch(updateQuestionThunk({ id: question.id, text: text }));
-//         await dispatch(getQuestionsThunk());
-//         closeModal();
-//     }
-
-//     return (
-//         <form
-//         onSubmit={(e) =>
-//             handleUpdateQuestion(e, question)
-//         }
-//     >
-//         <input
-//             type="text"
-//             value={text}
-//             onChange={(e) => setText(e.target.value)}
-//         ></input>
-//         <button>UPDATE?</button>
-//     </form>
-//     )
-// }
 
 function OptionsButton({ question }) {
     const dispatch = useDispatch();
