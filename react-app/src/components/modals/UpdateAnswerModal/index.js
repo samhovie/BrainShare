@@ -24,7 +24,8 @@ export default function UpdateAnswerModal({ answer }) {
     }
 
     return (
-        <form onSubmit={(e) => handleUpdateAnswer(e, answer)}>
+        <form className="create-qa-container flex flex-col"
+        onSubmit={(e) => handleUpdateAnswer(e, answer)}>
             <input
                 type="text"
                 value={text}
