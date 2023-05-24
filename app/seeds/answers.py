@@ -7,7 +7,7 @@ def seed_answers():
 
     for _ in range(100):
         answer = Answer(user_id=random.randint(1, 11), question_id=random.randint(
-            1, 100), text=fake.paragraph(nb_sentences=5))
+            1, 9), text=fake.paragraph(nb_sentences=5))
         db.session.add(answer)
 
 
