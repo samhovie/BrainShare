@@ -61,6 +61,11 @@ button.modal-button_add-question {
 
 }
 
+button.modal-button_add-answer {
+  border-radius: 20px;
+
+}
+
 button.profile {
   border: none;
   color: #ffffff;

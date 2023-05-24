@@ -115,3 +115,21 @@ def post_question():
         return question.to_dict()
 
     return {"errors": form.errors}
+
+@question_routes.route('/<int:id>/answers/new', methods=['POST'])
+def post_answer(id):
+    form = AnswerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+
+        answer = Answer(
+            user_id=current_user.id,
+            question_id=id,
+            text=form.data['text']
+        )
+
+        db.session.add(answer)
+        db.session.commit()
+        return answer.to_dict()
+
+    return {"errors": form.errors}

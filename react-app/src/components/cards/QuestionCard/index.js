@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import CardHeader from "../CardContainer/CardHeader";
 import OptionsButton from "../OptionsButton";
 import { useSelector } from "react-redux";
+import OpenModalButton from "../../modals/OpenModalButton";
+import CreateAnswerModal from "../../modals/CreateAnswerModal";
 
 export default function QuestionCard({ question }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -17,10 +19,16 @@ export default function QuestionCard({ question }) {
                 </div>
 
                 <div className="card card-button-row flex space-between">
-                    <button className="answer">
+                    {/* <button className="answer">
                         <i className="fa-regular fa-pen-to-square"></i>
                         Answer
-                    </button>
+                    </button> */}
+                    <OpenModalButton
+                        modalClass="add-answer"
+                        modalComponent={<CreateAnswerModal question_id={question.id} />}
+                        buttonText={ <><i className="fa-regular fa-pen-to-square"></i>
+                        Answer</>}
+                    />
 
                     {/* <button className="delete flex center"
                     onClick={openOptionsMenu}>
