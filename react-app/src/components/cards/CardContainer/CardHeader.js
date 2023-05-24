@@ -1,7 +1,6 @@
 import React from "react";
 import "./CardContainer.css";
 import OpenModalButton from "../../modals/OpenModalButton";
-import { handleDeleteQuestion } from "../../../clickHandlers/handleDeleteQuestion";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 

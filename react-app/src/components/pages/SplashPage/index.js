@@ -1,7 +1,8 @@
 import React from "react";
 import "./SplashPage.css";
-import LoginFormPage from "../../LoginFormPage";
-import SignupFormModal from "../../SignupFormModal";
+// import LoginFormPage from "../../LoginFormPage";
+import SignupFormModal from "../../modals/SignupFormModal";
+import LoginFormModal from "../../modals/LoginFormModal";
 import OpenModalButton from "../../modals/OpenModalButton";
 
 export default function SplashPage() {
@@ -22,7 +23,7 @@ export default function SplashPage() {
                     </div>
 
                     <div className="splash-content-right flex flex-col">
-                        <LoginFormPage></LoginFormPage>
+                        <LoginFormModal></LoginFormModal>
                     </div>
                 </div>
                 <div className="splash-footer top"></div>
