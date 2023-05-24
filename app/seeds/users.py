@@ -12,6 +12,7 @@ def seed_users():
         user = User(
             username=fake.name(), email=fake.email(), password='password')
         db.session.add(user)
+
     db.session.commit()
 
 

@@ -63,6 +63,8 @@ button.modal-button_add-question {
 
 button.modal-button_add-answer {
   border-radius: 20px;
+  display: flex;
+  align-items: center;
 
 }
 

@@ -17,17 +17,18 @@ export default function CreateAnswerModal({ question_id }) {
     }
 
     return (
-        <form
+        <form className="create-qa-container flex flex-col"
         onSubmit={(e) =>
             handleCreateAnswer(e)
         }
     >
-        <input
+        <textarea
             type="text"
             value={text}
+            rows="10" cols="50"
             onChange={(e) => setText(e.target.value)}
-        ></input>
-        <button>CREATE</button>
+        ></textarea>
+        <button>Add an answer</button>
     </form>
     )
 }

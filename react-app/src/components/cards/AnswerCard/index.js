@@ -1,5 +1,6 @@
 import React from "react";
 import "./AnswerCard.css";
+import "../Card.css"
 import CardHeader from "../CardContainer/CardHeader";
 import OpenModalButton from "../../modals/OpenModalButton";
 import { deleteAnswerThunk } from "../../../store/answer";

@@ -118,3 +118,25 @@ ul {
 .border-none {
     border: none;
 }
+
+.create-qa-container {
+    width: 500px;
+    /* height: 400px; */
+    height: fit-content;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+textarea {
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px 12px;
+}
+
+#modal-content {
+    border-radius: 10px;
+}
+
+.card-header {
+    margin-bottom: 10px;
+}

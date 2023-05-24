@@ -1,5 +1,6 @@
 import React from "react";
 import "./QuestionCard.css";
+import "../Card.css"
 // import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CardHeader from "../CardContainer/CardHeader";

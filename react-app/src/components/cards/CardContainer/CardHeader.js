@@ -10,7 +10,7 @@ export default function CardHeader({ user }) {
     const { closeModal } = useModal();
 
     return (
-        <div className=" card flex space-between">
+        <div className=" card flex space-between card-header">
             <div className="flex">
                 <div>
                     <img
@@ -22,29 +22,14 @@ export default function CardHeader({ user }) {
 
                 <div className="flex flex-col">
                     <div>
-                        <p>Cindy User</p>
+                        <p>{user.username}</p>
                     </div>
 
                     <div>
-                        <p>credential from BS University</p>
+                        <p>credential from University</p>
                     </div>
                 </div>
             </div>
-
-
-            {/* <OpenModalButton
-                className="delete-question"
-                modalComponent={
-                    <div>
-                        <button
-                            onClick={(e) => handleDeleteQuestion(question.id, dispatch, closeModal)}
-                        >
-                            DELETE?
-                        </button>
-                    </div>
-                }
-                buttonText={ <i className="fa-solid fa-xmark fa-lg"></i>}
-            /> */}
         </div>
     );
 }
