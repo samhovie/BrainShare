@@ -8,7 +8,6 @@ export default function CardHeader({ user }) {
     const dispatch = useDispatch()
     const { closeModal } = useModal();
 
-    console.log(typeof user.username[0])
 
     return (
         <div className=" card flex space-between card-header">

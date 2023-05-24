@@ -6,7 +6,9 @@ import { useModal } from "../../../context/Modal";
 export default function UpdateQuestionModal({question}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const [text, setText] = useState('')
+    const [text, setText] = useState(question.text)
+
+
 
     async function handleUpdateQuestion(e, question) {
         e.preventDefault();

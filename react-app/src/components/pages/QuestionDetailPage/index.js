@@ -11,39 +11,6 @@ import OpenModalButton from "../../modals/OpenModalButton";
 import CardContainer from "../../cards/CardContainer";
 import AnswerCard from "../../cards/AnswerCard";
 
-// question card with bigger font
-// for now: q only title a only text
-// question card with diff buttons and no title
-// upvote and comment
-function TestAnswer({ answer }) {
-    const dispatch = useDispatch();
-    const { closeModal } = useModal();
-    const [text, setText] = useState("");
-
-    async function handleUpdateAnswer(e, answer) {
-        e.preventDefault();
-        await dispatch(
-            updateAnswerThunk({
-                id: answer.id,
-                question_id: answer.question_id,
-                text: text,
-            })
-        );
-        await dispatch(getQuestionThunk(answer.question_id));
-        closeModal();
-    }
-
-    return (
-        <form onSubmit={(e) => handleUpdateAnswer(e, answer)}>
-            <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></input>
-            <button>UPDATE?</button>
-        </form>
-    );
-}
 
 export default function QuestionDetail() {
     const question = useSelector((state) => state.questions.singleQuestion);

@@ -7,7 +7,7 @@ import { getQuestionThunk } from "../../../store/question";
 export default function UpdateAnswerModal({ answer }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-    const [text, setText] = useState("");
+    const [text, setText] = useState(answer.text);
 
 
     async function handleUpdateAnswer(e, answer) {
