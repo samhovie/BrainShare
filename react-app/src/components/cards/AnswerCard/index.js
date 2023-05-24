@@ -12,37 +12,7 @@ import {
 import { getQuestionThunk } from "../../../store/question";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
-
-function Test({ answer }) {
-    const dispatch = useDispatch();
-    const { closeModal } = useModal();
-    const [text, setText] = useState("");
-
-
-    async function handleUpdateAnswer(e, answer) {
-        e.preventDefault();
-        await dispatch(
-            updateAnswerThunk({
-                id: answer.id,
-                question_id: answer.question_id,
-                text: text,
-            })
-        );
-        await dispatch(getQuestionThunk(answer.question_id));
-        closeModal();
-    }
-
-    return (
-        <form onSubmit={(e) => handleUpdateAnswer(e, answer)}>
-            <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></input>
-            <button>UPDATE?</button>
-        </form>
-    );
-}
+import UpdateAnswerModal from "../../modals/UpdateAnswerModal";
 
 export default function AnswerCard({ answer }) {
 
@@ -85,7 +55,7 @@ export default function AnswerCard({ answer }) {
                 />
                 <OpenModalButton
                     className="update-question"
-                    modalComponent={<Test answer={answer} />}
+                    modalComponent={<UpdateAnswerModal answer={answer} />}
                     buttonText="Update"
                 />
             </div>
