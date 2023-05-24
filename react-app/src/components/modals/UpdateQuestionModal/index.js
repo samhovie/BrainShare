@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteQuestionThunk, getQuestionsThunk, updateQuestionThunk  } from "../../../store/question";
-// import "./Card.css";
+import { getQuestionsThunk, updateQuestionThunk  } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
 
 export default function UpdateQuestionModal({question}) {

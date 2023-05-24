@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { deleteQuestionThunk, getQuestionsThunk, updateQuestionThunk  } from "../../../store/question";
+import { createQuestionThunk, getQuestionsThunk  } from "../../../store/question";
 // import "./Card.css";
 import { useModal } from "../../../context/Modal";
 
-export default function CreateQuestionModal({question}) {
+export default function CreateQuestionModal() {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [text, setText] = useState('')
 
-    async function handleUpdateQuestion(e, question) {
+    async function handleCreateQuestion(e) {
         e.preventDefault();
-        await dispatch(updateQuestionThunk({ id: question.id, text: text }));
+        await dispatch(createQuestionThunk({ text }));
         await dispatch(getQuestionsThunk());
         closeModal();
     }
@@ -19,7 +19,7 @@ export default function CreateQuestionModal({question}) {
     return (
         <form
         onSubmit={(e) =>
-            handleUpdateQuestion(e, question)
+            handleCreateQuestion(e)
         }
     >
         <input
@@ -27,7 +27,7 @@ export default function CreateQuestionModal({question}) {
             value={text}
             onChange={(e) => setText(e.target.value)}
         ></input>
-        <button>UPDATE?</button>
+        <button>CREATE</button>
     </form>
     )
 }

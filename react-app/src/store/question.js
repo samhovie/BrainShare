@@ -4,6 +4,7 @@ const GET_QUESTIONS = "questions/GET_QUESTIONS";
 const GET_QUESTION = "questions/GET_QUESTION";
 const DELETE_QUESTION = "questions/DELETE_QUESTION";
 const UPDATE_QUESTION = "questions/UPDATE_QUESTION";
+const CREATE_QUESTION = "questions/CREATE_QUESTION";
 
 const getQuestionsAction = (questions) => ({
 	type: GET_QUESTIONS,
@@ -25,6 +26,10 @@ const updateQuestionAction = (question) => ({
 	payload: question
 });
 
+const createQuestionAction = (question) => ({
+	type: CREATE_QUESTION,
+	payload: question
+});
 
 export const getQuestionsThunk = () => async (dispatch) => {
 	const response = await fetch("/api/questions/")
@@ -76,6 +81,22 @@ export const updateQuestionThunk = (question) => async (dispatch) => {
 	}
 };
 
+export const createQuestionThunk = (question) => async (dispatch) => {
+	const response = await fetch(`/api/questions/new`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(question)
+	  });
+
+	if (response.ok) {
+		const data = await response.json()
+		if(data.errors) return data.errors;
+		return dispatch(createQuestionAction(data.question));
+	}
+}
+
 
 const initialState = { allQuestions: {}, singleQuestion: {} }
 
@@ -92,6 +113,8 @@ export default function questionsReducer(state = initialState, action) {
 			return {...newState}
 		case GET_QUESTION:
 			return { ...state, singleQuestion: { ...action.payload } }
+		case CREATE_QUESTION:
+			return { ...state, ...action.payload }
 		default:
 			return state;
 	}

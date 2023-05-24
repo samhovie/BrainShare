@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import OpenModalButton from "../modals/OpenModalButton";
+import CreateQuestionModal from "../modals/CreateQuestionModal";
 
 export default function Navigation({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -29,13 +30,9 @@ export default function Navigation({ isLoaded }) {
                 </li>
 
                 <li>
-                {/* <button className="add-question">
-                        Add a question <i className="fa-solid fa-pencil"></i>
-                    </button> */}
-
                     <OpenModalButton
                     modalClass="add-question"
-                    modalComponent={<h1>hello</h1>}
+                    modalComponent={<CreateQuestionModal/>}
                     buttonText="Add a question"
                 />
                 </li>

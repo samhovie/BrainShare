@@ -98,3 +98,20 @@ def delete_answer(id):
         return {'success': 'good job'}
     else:
         return {"errors": 'nacho question'}
+
+@question_routes.route('/new', methods=['POST'])
+def post_question():
+    form = QuestionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+
+        question = Question(
+            user_id=current_user.id,
+            text=form.data['text']
+        )
+
+        db.session.add(question)
+        db.session.commit()
+        return question.to_dict()
+
+    return {"errors": form.errors}
