@@ -26,12 +26,13 @@ export default function UpdateAnswerModal({ answer }) {
     return (
         <form className="create-qa-container flex flex-col"
         onSubmit={(e) => handleUpdateAnswer(e, answer)}>
-            <input
-                type="text"
-                value={text}
+        <textarea
+        type="text"
+        value={text}
+        rows="10" cols="50"
                 onChange={(e) => setText(e.target.value)}
-            ></input>
-            <button>UPDATE?</button>
+            ></textarea>
+            <button>Update your answer</button>
         </form>
     );
 }
