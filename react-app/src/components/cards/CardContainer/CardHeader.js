@@ -8,18 +8,17 @@ export default function CardHeader({ user }) {
     const dispatch = useDispatch()
     const { closeModal } = useModal();
 
+    console.log(typeof user.username[0])
+
     return (
         <div className=" card flex space-between card-header">
             <div className="flex">
-                <div>
-                    <img
-                        src="https://livebnbbucket.s3.amazonaws.com/usericon.jpg"
-                        alt="card-user-icon"
-                        className="card-user-icon"
-                    ></img>
+                <div className="flex center card-icon-container">
+                    <i className={`fa-solid fa-${user.username[0].toLowerCase()} fa-xl`}></i>
+
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col header-text justify-center">
                     <div>
                         <p>{user.username}</p>
                     </div>
