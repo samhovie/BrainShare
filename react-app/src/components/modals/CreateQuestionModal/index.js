@@ -6,6 +6,7 @@ import {
 } from "../../../store/question";
 // import "./Card.css";
 import { useModal } from "../../../context/Modal";
+import { checkWordLength } from "../../../utils";
 
 export default function CreateQuestionModal() {
     const dispatch = useDispatch();
@@ -13,15 +14,7 @@ export default function CreateQuestionModal() {
     const [text, setText] = useState("");
     const [errors, setErrors] = useState(['']);
 
-    function checkWordLength(words) {
-        for (let word of words.split(' ')) {
-            console.log(word, word.length)
-            if (word.length > 30) {
-                return false;
-            }
-        }
-        return true;
-    }
+
     async function handleCreateQuestion(e) {
         e.preventDefault();
         if (!checkWordLength(text)) {

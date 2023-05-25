@@ -8,8 +8,9 @@ import DeleteAnswerModal from "../../modals/DeleteAnswerModal";
 import { useSelector } from "react-redux";
 
 export default function AnswerCard({ answer }) {
-    const sessionUser = useSelector((state) => state.session.user);
 
+    const sessionUser = useSelector((state) => state.session.user);
+    // if (!answer.text) return null;
     return (
         <>
             <CardHeader user={answer.user} />

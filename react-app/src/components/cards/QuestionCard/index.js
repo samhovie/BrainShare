@@ -10,6 +10,7 @@ import CreateAnswerModal from "../../modals/CreateAnswerModal";
 
 export default function QuestionCard({ question }) {
     const sessionUser = useSelector((state) => state.session.user);
+    // if(!question) return null;
     return (
         <>
             <NavLink to={`/questions/${question.id}`}>

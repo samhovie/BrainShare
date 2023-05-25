@@ -1,0 +1,9 @@
+.sign-up-container {
+    width: 400px;
+    padding: 20px 30px;
+}
+
+.sign-up-form > label > input {
+    margin-bottom: 10px;
+    height: 28px;
+}
