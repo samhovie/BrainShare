@@ -5,7 +5,7 @@ Where you can ask anything about music. Get answers on songwriting, producing, a
 https://soundforum.onrender.com
 
 ## Screenshots:
-<img src="https://livebnbbucket.s3.amazonaws.com/createq.png" />
+<img src="https://livebnbbucket.s3.amazonaws.com/splash.png" />
 <img src="https://livebnbbucket.s3.amazonaws.com/createq.png" />
 
 ## Technologies used:
