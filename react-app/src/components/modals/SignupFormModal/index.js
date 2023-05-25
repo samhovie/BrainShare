@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { signUp } from "../../../store/session";
 import "./SignupForm.css";
+import { checkWordLength } from "../../../utils";
 
 function SignupFormModal() {
     const dispatch = useDispatch();
@@ -18,6 +19,8 @@ function SignupFormModal() {
         const errors = {};
         if (username && username.length < 4)
             errors.name = "Username must be greater than 3 characters";
+        if (username && username.length > 41)
+            errors.name = "Username must be less than 41 characters";
         if (email && (!email.includes("@") || !email.includes(".")))
             errors.email = "Please provide a valid email";
         if (password && password.length < 6)
