@@ -29,6 +29,7 @@ export default function UpdateAnswerModal({ answer }) {
         <textarea
         type="text"
         value={text}
+        required
         rows="10" cols="50"
                 onChange={(e) => setText(e.target.value)}
             ></textarea>

@@ -3,10 +3,17 @@ import "./CardContainer.css";
 import OpenModalButton from "../../modals/OpenModalButton";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
+import { faker } from '@faker-js/faker';
 
 export default function CardHeader({ user }) {
     const dispatch = useDispatch()
     const { closeModal } = useModal();
+
+    const randInt = Math.floor(Math.random() * 4);
+    const degrees = ['B.A.', 'B.S.', 'M.A.', 'Ph.D']
+    let lorem = faker.lorem.words(1)
+    lorem = lorem.charAt(0).toUpperCase() + lorem.substring(1).toLowerCase();
+
 
 
     return (
@@ -23,7 +30,7 @@ export default function CardHeader({ user }) {
                     </div>
 
                     <div>
-                        <p>credential from University</p>
+                        <p>{degrees[randInt]} from {lorem} University</p>
                     </div>
                 </div>
             </div>

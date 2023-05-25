@@ -26,6 +26,7 @@ export default function UpdateQuestionModal({question}) {
         <textarea
         type="text"
         value={text}
+        required
         rows="10" cols="50"
             onChange={(e) => setText(e.target.value)}
         ></textarea>
