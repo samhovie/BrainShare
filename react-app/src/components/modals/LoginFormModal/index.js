@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
@@ -11,8 +11,24 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+
+  useEffect(() => {
+      const errors = [];
+      if (email && (!email.includes("@") || !email.includes(".")))
+          errors.push("Please provide a valid email");
+      if (password && password.length < 6)
+          errors.push("Password must be greater than 5 characters");
+      setErrors(errors);
+  }, [
+      email,
+      password
+  ]);
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);

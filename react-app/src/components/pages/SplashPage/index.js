@@ -6,7 +6,6 @@ import LoginFormModal from "../../modals/LoginFormModal";
 import OpenModalButton from "../../modals/OpenModalButton";
 import { Link } from "react-router-dom";
 
-
 export default function SplashPage() {
     return (
         <div className="splash-page flex center ">
@@ -29,7 +28,14 @@ export default function SplashPage() {
                     </div>
                 </div>
 
-                <div className="splash-footer top flex center"><Link to={{ pathname: "https://github.com/samhovie" }} target="_blank">Check out my Github!</Link></div>
+                <div className="splash-footer top flex center">
+                    <Link
+                        to={{ pathname: "https://github.com/samhovie" }}
+                        target="_blank"
+                    >
+                        Check out my Github!
+                    </Link>
+                </div>
 
                 <div className="splash-footer bottom "></div>
             </div>
