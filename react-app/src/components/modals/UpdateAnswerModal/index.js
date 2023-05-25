@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { updateAnswerThunk } from "../../../store/answer";
 import { getQuestionThunk } from "../../../store/question";
+import { checkWordLength } from "../../../utils";
 
 export default function UpdateAnswerModal({ answer }) {
     const dispatch = useDispatch();
@@ -41,6 +42,11 @@ export default function UpdateAnswerModal({ answer }) {
     return (
         <form className="create-qa-container flex flex-col"
         onSubmit={(e) => handleUpdateAnswer(e, answer)}>
+                        <ul>
+                {Object.values(errors).map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
         <textarea
         type="text"
         value={text}
