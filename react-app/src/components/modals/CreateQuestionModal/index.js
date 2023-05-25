@@ -12,19 +12,26 @@ export default function CreateQuestionModal() {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [text, setText] = useState("");
-    const [errors, setErrors] = useState(['']);
+    const [errors, setErrors] = useState({});
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    useEffect(() => {
+        const errors = {};
+        if (text && text.length < 4)
+            errors.length = "Answer must be greater than 3 characters";
+        if (text && text.length > 440)
+            errors.length = "Answer must be less than 440 characters";
+        if (!checkWordLength(text))
+            errors.word = "Word lengths must be less than 30 characters";
+        setErrors(errors);
+    }, [text, hasSubmitted]);
 
     async function handleCreateQuestion(e) {
         e.preventDefault();
-        if (!checkWordLength(text)) {
-            setErrors(["Word length must be less than 30 "]);
-        }
-        else {
-            await dispatch(createQuestionThunk({ text }));
-            await dispatch(getQuestionsThunk());
-            closeModal();
-        }
+
+        await dispatch(createQuestionThunk({ text }));
+        await dispatch(getQuestionsThunk());
+        closeModal();
     }
 
     return (
@@ -33,7 +40,7 @@ export default function CreateQuestionModal() {
             onSubmit={(e) => handleCreateQuestion(e)}
         >
             <ul>
-                {errors.map((error, idx) => (
+                {Object.values(errors).map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}
             </ul>
@@ -42,9 +49,10 @@ export default function CreateQuestionModal() {
                 value={text}
                 rows="10"
                 cols="50"
+                required
                 onChange={(e) => setText(e.target.value)}
             ></textarea>
-            <button>Add a question</button>
+            <button disabled={Object.values(errors).length > 0}>Add a question</button>
         </form>
     );
 }
