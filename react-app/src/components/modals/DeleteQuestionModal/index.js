@@ -6,7 +6,7 @@ import {
 } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
 
-export default function DeleteQuestionModal({ question}) {
+export default function DeleteQuestionModal({ question }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -16,16 +16,39 @@ export default function DeleteQuestionModal({ question}) {
         closeModal();
     }
 
+    // return (
+    //     <div>
+    //         <button
+    //             onClick={(e) => {
+    //                 e.preventDefault();
+    //                 handleDeleteQuestion(question.id);
+    //             }}
+    //         >
+    //             DELETE?
+    //         </button>
+    //     </div>
+    // );
     return (
-        <div>
+        <div className="flex flex-col align-center padding-md">
+            <h4>Are you sure you want to delete your question?</h4>
+            <div className="flex">
+            <button
+                onClick={(e) => {
+                    e.preventDefault();
+                    closeModal();
+                }}
+            >
+                No (Keep)
+            </button>
             <button
                 onClick={(e) => {
                     e.preventDefault();
                     handleDeleteQuestion(question.id);
                 }}
             >
-                DELETE?
+                Yes (Delete)
             </button>
+            </div>
         </div>
     );
 }

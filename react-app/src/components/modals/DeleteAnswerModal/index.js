@@ -16,15 +16,26 @@ export default function DeleteAnswerModal({ answer }) {
     }
 
     return (
-        <div>
+        <div className="flex flex-col align-center padding-md">
+            <h4>Are you sure you want to delete your answer?</h4>
+            <div className="flex">
+            <button
+                onClick={(e) => {
+                    e.preventDefault();
+                    closeModal();
+                }}
+            >
+                No (Keep)
+            </button>
             <button
                 onClick={(e) => {
                     e.preventDefault();
                     handleDeleteAnswer(answer);
                 }}
             >
-                DELETE?
+                Yes (Delete)
             </button>
+            </div>
         </div>
     );
 }

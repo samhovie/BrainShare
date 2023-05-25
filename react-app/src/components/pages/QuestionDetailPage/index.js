@@ -11,7 +11,6 @@ import AnswerCard from "../../cards/AnswerCard";
 
 export default function QuestionDetail() {
     const question = useSelector((state) => state.questions.singleQuestion);
-    // const answers = useSelector((state) => state.answers.allAnswers)
     const sessionUser = useSelector((state) => state.session.user);
     const { id } = useParams();
     const { closeModal } = useModal();

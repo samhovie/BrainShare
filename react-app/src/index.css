@@ -114,6 +114,8 @@ ul {
 .title-lg {
     font-size: 1.17rem;
     font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 5px;
 }
 
 .border-none {
@@ -141,4 +143,8 @@ textarea {
 .card-header {
     margin-bottom: 10px;
     margin-top: 5px;
+}
+
+.padding-md {
+    padding: 10px 15px;
 }

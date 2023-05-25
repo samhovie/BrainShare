@@ -5,6 +5,7 @@ import CardHeader from "../CardContainer/CardHeader";
 import OpenModalButton from "../../modals/OpenModalButton";
 import UpdateAnswerModal from "../../modals/UpdateAnswerModal";
 import DeleteAnswerModal from "../../modals/DeleteAnswerModal";
+import { useSelector } from "react-redux";
 
 export default function AnswerCard({ answer }) {
     const sessionUser = useSelector((state) => state.session.user);
