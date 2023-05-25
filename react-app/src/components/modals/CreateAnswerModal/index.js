@@ -17,7 +17,7 @@ export default function CreateAnswerModal({ question_id }) {
         const errors = {};
         if (text && text.length < 4)
             errors.length = "Answer must be greater than 3 characters";
-        if (text && text.length > 440)
+        if (text && text.length > 500)
             errors.length = "Answer must be less than 440 characters";
         if (!checkWordLength(text))
             errors.word = "Word lengths must be less than 30 characters";
@@ -28,7 +28,6 @@ export default function CreateAnswerModal({ question_id }) {
         e.preventDefault();
         setErrors({});
 
-		// setHasSubmitted(true);
 
         await dispatch(createAnswerThunk({ text, question_id }));
         await dispatch(getQuestionThunk(question_id));

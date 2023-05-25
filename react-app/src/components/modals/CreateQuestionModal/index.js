@@ -18,9 +18,9 @@ export default function CreateQuestionModal() {
     useEffect(() => {
         const errors = {};
         if (text && text.length < 4)
-            errors.length = "Answer must be greater than 3 characters";
-        if (text && text.length > 440)
-            errors.length = "Answer must be less than 440 characters";
+            errors.length = "Question must be greater than 3 characters";
+        if (text && text.length > 255)
+            errors.length = "Question must be less than 440 characters";
         if (!checkWordLength(text))
             errors.word = "Word lengths must be less than 30 characters";
         setErrors(errors);

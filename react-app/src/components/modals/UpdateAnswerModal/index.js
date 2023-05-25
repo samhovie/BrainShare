@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { updateAnswerThunk } from "../../../store/answer";
@@ -9,9 +9,24 @@ export default function UpdateAnswerModal({ answer }) {
     const { closeModal } = useModal();
     const [text, setText] = useState(answer.text);
 
+    const [errors, setErrors] = useState({});
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        const errors = {};
+        if (text && text.length < 4)
+            errors.length = "Answer must be greater than 3 characters";
+        if (text && text.length > 500)
+            errors.length = "Answer must be less than 440 characters";
+        if (!checkWordLength(text))
+            errors.word = "Word lengths must be less than 30 characters";
+        setErrors(errors);
+    }, [text, hasSubmitted]);
+
 
     async function handleUpdateAnswer(e, answer) {
         e.preventDefault();
+        setErrors({});
         await dispatch(
             updateAnswerThunk({
                 id: answer.id,
@@ -33,7 +48,7 @@ export default function UpdateAnswerModal({ answer }) {
         rows="10" cols="50"
                 onChange={(e) => setText(e.target.value)}
             ></textarea>
-            <button>Update your answer</button>
+            <button disabled={Object.values(errors).length > 0}>Update your answer</button>
         </form>
     );
 }
