@@ -7,6 +7,7 @@ import {
 // import "./Card.css";
 import { useModal } from "../../../context/Modal";
 import { checkWordLength } from "../../../utils";
+import { useHistory } from "react-router-dom";
 
 export default function CreateQuestionModal() {
     const dispatch = useDispatch();

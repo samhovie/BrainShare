@@ -6,12 +6,14 @@ import {
 } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
 import { checkWordLength } from "../../../utils";
+import { useHistory } from "react-router-dom";
+
 
 export default function UpdateQuestionModal({ question }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [text, setText] = useState(question.text);
-
+    const history = useHistory()
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -30,6 +32,7 @@ export default function UpdateQuestionModal({ question }) {
         await dispatch(updateQuestionThunk({ id: question.id, text: text }));
         await dispatch(getQuestionsThunk());
         closeModal();
+        history.push('/questions/' + question.id)
     }
 
     return (

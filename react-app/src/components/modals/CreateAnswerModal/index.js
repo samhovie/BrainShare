@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getQuestionThunk } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
+import { useHistory } from "react-router-dom";
 import { createAnswerThunk } from "../../../store/answer";
 import { checkWordLength } from "../../../utils";
+
 
 export default function CreateAnswerModal({ question_id }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [text, setText] = useState("");
-
+    const history = useHistory()
     const [errors, setErrors] = useState({});
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -28,10 +30,10 @@ export default function CreateAnswerModal({ question_id }) {
         e.preventDefault();
         setErrors({});
 
-
         await dispatch(createAnswerThunk({ text, question_id }));
         await dispatch(getQuestionThunk(question_id));
         closeModal();
+        history.push('/questions/' + question_id)
     }
 
     return (
