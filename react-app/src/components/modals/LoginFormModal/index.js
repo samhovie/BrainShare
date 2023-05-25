@@ -24,7 +24,6 @@ function LoginFormModal() {
   const handleDemoLogin = async (e) => {
     e.preventDefault();
     await dispatch(login('demo@aa.io', 'password'))
-    // history.push('/')
   }
 
   return (
