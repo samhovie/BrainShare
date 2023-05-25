@@ -25,7 +25,7 @@ export default function Navigation({ isLoaded }) {
                 </li>
 
                 <li className="flex">
-                    <input className="search" placeholder="Search"></input>
+                    {/* <input className="search" placeholder="Search"></input> */}
                     <ProfileButton user={sessionUser} />
                 </li>
 
