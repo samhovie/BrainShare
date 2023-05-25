@@ -21,6 +21,12 @@ function LoginFormModal() {
     }
   };
 
+  const handleDemoLogin = async (e) => {
+    e.preventDefault();
+    await dispatch(login('demo@aa.io', 'password'))
+    // history.push('/')
+  }
+
   return (
     <div className="flex flex-col max-width ">
       <h1 style={{fontSize: '25px', paddingBottom: '10px'}}>Log In</h1>
@@ -50,7 +56,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <div className="flex"><button type="submit">Log In</button><button onClick={handleDemoLogin}>Demo User</button></div>
       </form>
     </div>
   );
