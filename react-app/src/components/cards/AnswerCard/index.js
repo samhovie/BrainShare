@@ -8,6 +8,7 @@ import { getQuestionThunk } from "../../../store/question";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import UpdateAnswerModal from "../../modals/UpdateAnswerModal";
+import DeleteAnswerModal from "../../modals/DeleteAnswerModal";
 
 export default function AnswerCard({ answer }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -33,16 +34,17 @@ export default function AnswerCard({ answer }) {
                     <OpenModalButton
                         className="delete-question"
                         modalComponent={
-                            <div>
-                                <button
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleDeleteAnswer(answer);
-                                    }}
-                                >
-                                    DELETE?
-                                </button>
-                            </div>
+                            <DeleteAnswerModal answer={answer}/>
+                            // <div>
+                            //     <button
+                            //         onClick={(e) => {
+                            //             e.preventDefault();
+                            //             handleDeleteAnswer(answer);
+                            //         }}
+                            //     >
+                            //         DELETE?
+                            //     </button>
+                            // </div>
                         }
                         buttonText="Delete"
                     />
