@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CardContainer.css";
 import OpenModalButton from "../../modals/OpenModalButton";
 import { useDispatch } from "react-redux";
@@ -8,13 +8,20 @@ import { faker } from '@faker-js/faker';
 export default function CardHeader({ user }) {
     const dispatch = useDispatch()
     const { closeModal } = useModal();
+    // const [degreeText, setDegreeText] = useState('')
 
-    const randInt = Math.floor(Math.random() * 4);
-    const degrees = ['B.A.', 'B.S.', 'M.A.', 'Ph.D']
-    let lorem = faker.lorem.words(1)
-    lorem = lorem.charAt(0).toUpperCase() + lorem.substring(1).toLowerCase();
+    // useEffect(() => {
+    //     const randInt = Math.floor(Math.random() * 4);
+    //     const degrees = ['B.A.', 'B.S.', 'M.A.', 'Ph.D']
+    //     let lorem = faker.lorem.words(1)
+    //     lorem = lorem.charAt(0).toUpperCase() + lorem.substring(1).toLowerCase();
+    //     setDegreeText(`${degrees[randInt]} from ${lorem} University`)
+    // }, [])
 
-    const [degreeText,] = useState(`${degrees[randInt]} from ${lorem} University`)
+    console.log(user)
+
+
+
 
 
     return (
@@ -31,7 +38,7 @@ export default function CardHeader({ user }) {
                     </div>
 
                     <div>
-                        <p>{degreeText}</p>
+                        <p>{user.degree}</p>
                     </div>
                 </div>
             </div>

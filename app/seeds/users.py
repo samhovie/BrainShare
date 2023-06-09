@@ -1,16 +1,24 @@
 from app.models import db, User, environment, SCHEMA, fake
 from sqlalchemy.sql import text
+import random
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', degree='B.A. from Lorem University')
     db.session.add(demo)
 
     for _ in range(10):
+
+        randInt = random.randint(0, 3)
+        degrees = ['B.A.', 'B.S.', 'M.A.', 'Ph.D']
+        lorem = fake.word()
+        university = lorem[0].upper() + lorem[1:]
+        degree = degrees[randInt] + ' from ' + university + ' University'
+
         user = User(
-            username=fake.name(), email=fake.email(), password='password')
+            username=fake.name(), email=fake.email(), password='password', degree=degree)
         db.session.add(user)
 
     db.session.commit()

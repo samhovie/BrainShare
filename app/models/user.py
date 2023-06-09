@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     # credential = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    degree = db.Column(db.String(255), nullable=False)
 
     questions = db.relationship('Question', back_populates = 'user', cascade='all, delete-orphan')
 
@@ -34,12 +35,14 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'degree': self.degree
         }
 
     def to_dict_no_question_answer(self):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'degree': self.degree
         }
