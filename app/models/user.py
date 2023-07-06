@@ -20,6 +20,8 @@ class User(db.Model, UserMixin):
 
     answers = db.relationship('Answer', back_populates = 'user', cascade='all, delete-orphan')
 
+    comments = db.relationship('Comment', back_populates = 'user', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password

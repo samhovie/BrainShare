@@ -37,6 +37,10 @@ button {
     border-radius: 5px;
 }
 
+/* .modal-button {
+
+} */
+
 * {
     box-sizing: border-box;
     font-family: Arial;
@@ -84,6 +88,11 @@ h1 {
 .flex-col {
     flex-direction: column;
 }
+
+.flex-row {
+    flex-direction: row;
+}
+
 
 .fit-width {
     width: fit-content;

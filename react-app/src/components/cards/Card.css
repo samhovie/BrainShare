@@ -7,11 +7,31 @@
     display: none;
 }
 
-/* .card-container > a > div, .card-container > div {
-    padding: 10px 10px;
-} */
 
+.card-icon-container {
+    width: 45px;
+    height: 45px;
+    border: 1px solid darkgrey;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
- /* {
-    padding: 0px 20px;
-} */
+.comment-container {
+    /* margin: 5px -10px; */
+    margin-top: 5px;
+    padding: 5px 0px;
+    /* border-top: 1px solid lightgray; */
+    /* border-bottom: 1px solid lightgray; */
+}
+
+.comment-content {
+    margin-top: 5px;
+    width: 90%;
+}
+.comment-content > .username {
+    margin-bottom: 5px;
+}
+
+.username {
+    font-weight: bold;
+}

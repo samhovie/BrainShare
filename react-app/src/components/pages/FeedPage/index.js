@@ -10,7 +10,7 @@ import {
     updateQuestionThunk,
 } from "../../../store/question";
 import QuestionCard from "../../cards/QuestionCard";
-import CardContainer from "../../cards/CardContainer";
+import { getCommentsThunk } from "../../../store/comment";
 
 function Test({ question }) {
     const dispatch = useDispatch();
@@ -46,6 +46,7 @@ export default function FeedPage() {
 
     useEffect(() => {
         dispatch(getQuestionsThunk());
+        dispatch(getCommentsThunk())
     }, [dispatch]);
 
     async function handleDeleteQuestion(id) {
@@ -56,11 +57,10 @@ export default function FeedPage() {
 
     return (
         <div className="feed page">
-            {questions.map((question) => (
-
-                    <CardContainer key={question.id}
-                        Card={() => <QuestionCard question={question} />}
-                    />
+            {questions.map((question, idx) => (
+                <div key={idx} className=" card card-container">
+                    <QuestionCard question={question} />
+                </div>
             ))}
         </div>
     );

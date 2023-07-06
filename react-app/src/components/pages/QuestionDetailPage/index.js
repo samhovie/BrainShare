@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 import QuestionCard from "../../cards/QuestionCard";
 import { getQuestionThunk } from "../../../store/question";
 import { useModal } from "../../../context/Modal";
-import CardContainer from "../../cards/CardContainer";
 import AnswerCard from "../../cards/AnswerCard";
-
 
 export default function QuestionDetail() {
     const question = useSelector((state) => state.questions.singleQuestion);
@@ -26,16 +24,14 @@ export default function QuestionDetail() {
     }
     return (
         <div className="page">
-            <CardContainer
-                key={question.id}
-                Card={() => <QuestionCard question={question} />}
-            />
+            <div className=" card card-container">
+                <QuestionCard question={question} />
+            </div>
 
             {question.answers.map((answer) => (
-                <CardContainer
-                    key={answer.id}
-                    Card={() => <AnswerCard answer={answer} />}
-                />
+                <div key={answer.id} className=" card card-container">
+                    <AnswerCard answer={answer} />
+                </div>
             ))}
         </div>
     );

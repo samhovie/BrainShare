@@ -1,21 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 import OpenModalButton from "../modals/OpenModalButton";
-import {
-    deleteQuestionThunk,
-    getQuestionsThunk,
-    updateQuestionThunk,
-} from "../../store/question";
 import "./Card.css";
-import { useModal } from "../../context/Modal";
 import UpdateQuestionModal from "../modals/UpdateQuestionModal";
 import DeleteQuestionModal from "../modals/DeleteQuestionModal";
 
 function OptionsButton({ question }) {
-    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
-    const { closeModal } = useModal();
 
     const openMenu = (e) => {
         e.preventDefault();
@@ -36,12 +27,6 @@ function OptionsButton({ question }) {
 
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
-
-    async function handleDeleteQuestion(id) {
-        await dispatch(deleteQuestionThunk(id));
-        await dispatch(getQuestionsThunk());
-        closeModal();
-    }
 
     const ulClassName = "options-dropdown" + (showMenu ? "" : " hidden");
     const closeMenu = () => setShowMenu(false);

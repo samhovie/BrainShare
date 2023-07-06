@@ -2,7 +2,7 @@ import React from "react";
 import "./QuestionCard.css";
 import "../Card.css"
 import { NavLink } from "react-router-dom";
-import CardHeader from "../CardContainer/CardHeader";
+import CardHeader from "../CardHeader";
 import OptionsButton from "../OptionsButton";
 import { useSelector } from "react-redux";
 import OpenModalButton from "../../modals/OpenModalButton";
