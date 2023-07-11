@@ -3,6 +3,7 @@ const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele })
 const GET_COMMENTS = "comments/GET_COMMENTS";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 const CREATE_COMMENT = "comments/CREATE_COMMENT";
+const UPDATE_COMMENT = "comments/UPDATE_COMMENT";
 
 const getCommentsAction = (comments) => ({
 	type: GET_COMMENTS,
@@ -19,6 +20,10 @@ const createCommentAction = (comment) => ({
     payload: comment,
 });
 
+const updateCommentAction = (comment) => ({
+    type: UPDATE_COMMENT,
+    payload: comment,
+});
 
 export const getCommentsThunk = () => async (dispatch) => {
 	const response = await fetch("/api/comments/")
@@ -64,6 +69,25 @@ export const createCommentThunk = (comment) => async (dispatch) => {
     }
 };
 
+export const updateCommentThunk = (comment) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${comment.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comment),
+    });
+
+    if (response.ok) {
+
+        const data = await response.json();
+        console.log(data)
+        if (data.errors) return data.errors;
+        return dispatch(updateCommentAction(data.comment));
+    }
+};
+
+
 const initialState = { allComments: {}, singleComment: {} }
 
 export default function commentsReducer(state = initialState, action) {
@@ -76,6 +100,9 @@ export default function commentsReducer(state = initialState, action) {
             return newState;
         case CREATE_COMMENT:
                 return { ...state, ...action.payload };
+        case UPDATE_COMMENT:
+            newState.allComments[action.payload.id] = action.payload;
+            return { ...newState };
 		default:
 			return state;
 	}

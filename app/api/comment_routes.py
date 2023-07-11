@@ -40,3 +40,26 @@ def post_comment(id):
         return comment.to_dict()
 
     return {"errors": form.errors}
+
+@comment_routes.route('/<int:id>', methods=['PUT'])
+# @login_required
+def update_comment(id):
+
+    print('WE HERERE KADSAFPDSA ')
+    """
+    Update a question by id and returns success
+    """
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        comment = Comment.query.get(id)
+        if not comment:
+            return {"errors": "comment doesn't exist"}
+        if comment.user_id == current_user.id:
+            comment.text = form.data['text']
+            db.session.commit()
+            print('HEOOOOSODAFLDS', comment.to_dict())
+            return {'comment': comment.to_dict()}
+        else:
+            return {"errors": 'nacho comment'}
+    return {'errors': 'validation error'}

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import DeleteCommentModal from "../../modals/DeleteCommentModal";
 import { useDispatch } from "react-redux";
 import { getQuestionThunk } from "../../../store/question";
-import { createCommentThunk } from "../../../store/comment";
+import { createCommentThunk, updateCommentThunk } from "../../../store/comment";
 
 export default function AnswerCard({ answer }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -26,6 +26,19 @@ export default function AnswerCard({ answer }) {
         await dispatch(createCommentThunk({ text, answer_id: answer.id }));
         await dispatch(getQuestionThunk(answer.question_id));
         setText("");
+        // closeModal();
+        // history.push('/questions/' + question_id)
+    }
+
+    async function handleUpdateComment(e, id) {
+        e.preventDefault();
+        // setErrors({});
+
+        console.log()
+        await dispatch(updateCommentThunk({id, text: updateText, answer_id: answer.id }));
+        await dispatch(getQuestionThunk(answer.question_id));
+        setShowUpdateId(null)
+        // setText("");
         // closeModal();
         // history.push('/questions/' + question_id)
     }
@@ -138,16 +151,17 @@ export default function AnswerCard({ answer }) {
                                             )}
                                         </>
                                     ) : (
-                                        <div className="">
+                                        <form onSubmit={(e) => handleUpdateComment(e, comment.id)} className="">
                                             <input
                                             value={updateText}
                                             onChange={(e) => setUpdateText(e.target.value)}
                                             ></input>
                                             <div>
                                             <button onClick={() => setShowUpdateId(null)}>Cancel</button>
-                                            <button>Update</button>
+                                            <button type="submit">Update</button>
                                             </div>
-                                        </div>
+
+                                        </form>
                                     )}
                                 </div>
                             </>
