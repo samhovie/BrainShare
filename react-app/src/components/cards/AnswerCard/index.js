@@ -15,7 +15,8 @@ export default function AnswerCard({ answer }) {
     const sessionUser = useSelector((state) => state.session.user);
     const [showComments, setShowComments] = useState(true); // change
     const [text, setText] = useState("");
-    const [showUpdateId, setShowUpdateId] = useState(null );
+    const [updateText, setUpdateText] = useState("");
+    const [showUpdateId, setShowUpdateId] = useState(null);
     const dispatch = useDispatch();
 
     async function handleCreateComment(e) {
@@ -30,6 +31,7 @@ export default function AnswerCard({ answer }) {
     }
 
     async function handleUpdateComment(id) {
+        setUpdateText(answer.comments.find(comment => comment.id === id).text)
         setShowUpdateId(id);
     }
 
@@ -104,34 +106,44 @@ export default function AnswerCard({ answer }) {
                                         {comment.user.username}
                                     </p>
 
-                                    <>
-                                        {showUpdateId !== comment.id ? (
+                                    {showUpdateId !== comment.id ? (
+                                        <>
                                             <p>{comment.text}</p>
-                                        ) : (
-                                            <input></input>
-                                        )}
-                                    </>
 
-                                    {sessionUser.id === comment.user.id && (
-                                        <div className="card card-button-row flex ">
-                                            {/* <button>Delete</button> */}
-                                            <OpenModalButton
-                                                className="delete-comment"
-                                                modalComponent={
-                                                    <DeleteCommentModal
-                                                        comment={comment}
+                                            {sessionUser.id ===
+                                                comment.user.id && (
+                                                <div className="card card-button-row flex ">
+                                                    {/* <button>Delete</button> */}
+                                                    <OpenModalButton
+                                                        className="delete-comment"
+                                                        modalComponent={
+                                                            <DeleteCommentModal
+                                                                comment={
+                                                                    comment
+                                                                }
+                                                            />
+                                                        }
+                                                        buttonText="Delete"
                                                     />
-                                                }
-                                                buttonText="Delete"
-                                            />
-                                            <button
-                                                onClick={() =>
-                                                    handleUpdateComment(comment.id)
-                                                }
-                                            >
-                                                Update
-                                            </button>
-                                        </div>
+                                                    <button
+                                                        onClick={() =>
+                                                            handleUpdateComment(
+                                                                comment.id
+                                                            )
+                                                        }
+                                                    >
+                                                        Update
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <input
+                                            value={updateText}
+                                            onChange={(e) => setUpdateText(e.target.value)}
+                                            ></input>
+                                        </>
                                     )}
                                 </div>
                             </>
