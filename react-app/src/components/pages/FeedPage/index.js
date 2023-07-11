@@ -10,7 +10,6 @@ import {
     updateQuestionThunk,
 } from "../../../store/question";
 import QuestionCard from "../../cards/QuestionCard";
-import { getCommentsThunk } from "../../../store/comment";
 
 function Test({ question }) {
     const dispatch = useDispatch();
@@ -46,7 +45,6 @@ export default function FeedPage() {
 
     useEffect(() => {
         dispatch(getQuestionsThunk());
-        dispatch(getCommentsThunk())
     }, [dispatch]);
 
     async function handleDeleteQuestion(id) {

@@ -5,14 +5,15 @@ import random
 # Adds a demo user, you can add other users here if you want
 def seed_questions():
     # fake.displayName()
-    demo = Question(user_id=1, text=fake.sentence()[:-1] + '?')
-
-    for _ in range(10):
-        question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
-        db.session.add(question)
-
-
+    demo = Question(user_id=1, text=fake.sentence()[:-1] + '???')
     db.session.add(demo)
+
+    # for _ in range(10):
+    #     question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
+    #     db.session.add(question)
+
+
+
     db.session.commit()
 
 

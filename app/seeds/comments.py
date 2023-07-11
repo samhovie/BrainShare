@@ -5,15 +5,15 @@ import random
 
 def seed_comments():
 
-    for _ in range(100):
-        comment = Comment(user_id=random.randint(1, 11), answer_id=random.randint(
-            1, 9), text=fake.paragraph(nb_sentences=5))
-        db.session.add(comment)
+    # for _ in range(100):
+    #     comment = Comment(user_id=random.randint(1, 11), answer_id=random.randint(
+    #         1, 9), text=fake.paragraph(nb_sentences=5))
+    #     db.session.add(comment)
 
 
     db.session.add(Comment(user_id=1, answer_id=1, text=fake.paragraph(nb_sentences=5)))
-    db.session.add(Comment(user_id=1, answer_id=3, text=fake.paragraph(nb_sentences=5)))
-    db.session.add(Comment(user_id=1, answer_id=4, text=fake.paragraph(nb_sentences=5)))
+    db.session.add(Comment(user_id=2, answer_id=1, text=fake.paragraph(nb_sentences=5)))
+    db.session.add(Comment(user_id=1, answer_id=1, text=fake.paragraph(nb_sentences=5)))
     db.session.commit()
 
 
