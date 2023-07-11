@@ -30,7 +30,7 @@ export default function AnswerCard({ answer }) {
         // history.push('/questions/' + question_id)
     }
 
-    async function handleUpdateComment(id) {
+    async function showUpdateCommentInput(id) {
         setUpdateText(answer.comments.find(comment => comment.id === id).text)
         setShowUpdateId(id);
     }
@@ -127,7 +127,7 @@ export default function AnswerCard({ answer }) {
                                                     />
                                                     <button
                                                         onClick={() =>
-                                                            handleUpdateComment(
+                                                            showUpdateCommentInput(
                                                                 comment.id
                                                             )
                                                         }
@@ -138,12 +138,16 @@ export default function AnswerCard({ answer }) {
                                             )}
                                         </>
                                     ) : (
-                                        <>
+                                        <div className="">
                                             <input
                                             value={updateText}
                                             onChange={(e) => setUpdateText(e.target.value)}
                                             ></input>
-                                        </>
+                                            <div>
+                                            <button onClick={() => setShowUpdateId(null)}>Cancel</button>
+                                            <button>Update</button>
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             </>
