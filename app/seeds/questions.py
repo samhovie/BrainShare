@@ -8,9 +8,9 @@ def seed_questions():
     demo = Question(user_id=1, text=fake.sentence()[:-1] + '???')
     db.session.add(demo)
 
-    # for _ in range(10):
-    #     question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
-    #     db.session.add(question)
+    for _ in range(10):
+        question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
+        db.session.add(question)
 
 
 

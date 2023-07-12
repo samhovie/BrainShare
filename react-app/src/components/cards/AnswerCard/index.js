@@ -13,7 +13,7 @@ import { createCommentThunk, updateCommentThunk } from "../../../store/comment";
 
 export default function AnswerCard({ answer }) {
     const sessionUser = useSelector((state) => state.session.user);
-    const [showComments, setShowComments] = useState(true); // change
+    const [showComments, setShowComments] = useState(false); // change
     const [text, setText] = useState("");
     const [updateText, setUpdateText] = useState("");
     const [showUpdateId, setShowUpdateId] = useState(null);
