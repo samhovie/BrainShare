@@ -19,6 +19,11 @@ export default function AnswerCard({ answer }) {
     const [showUpdateId, setShowUpdateId] = useState(null);
     const dispatch = useDispatch();
 
+    function auto_grow(element) {
+        element.style.height = "5px";
+        element.style.height = element.scrollHeight + "px";
+    }
+
     async function handleCreateComment(e) {
         e.preventDefault();
         // setErrors({});
@@ -34,17 +39,21 @@ export default function AnswerCard({ answer }) {
         e.preventDefault();
         // setErrors({});
 
-        console.log()
-        await dispatch(updateCommentThunk({id, text: updateText, answer_id: answer.id }));
+        console.log();
+        await dispatch(
+            updateCommentThunk({ id, text: updateText, answer_id: answer.id })
+        );
         await dispatch(getQuestionThunk(answer.question_id));
-        setShowUpdateId(null)
+        setShowUpdateId(null);
         // setText("");
         // closeModal();
         // history.push('/questions/' + question_id)
     }
 
     async function showUpdateCommentInput(id) {
-        setUpdateText(answer.comments.find(comment => comment.id === id).text)
+        setUpdateText(
+            answer.comments.find((comment) => comment.id === id).text
+        );
         setShowUpdateId(id);
     }
 
@@ -90,18 +99,23 @@ export default function AnswerCard({ answer }) {
             {showComments && (
                 // this will be a map / list of comments
                 <>
-                    <div className="flex">
+                    <div className="flex comment-input">
                         <div className="flex center card-icon-container">
                             <i
                                 className={`fa-solid fa-${sessionUser.username[0].toLowerCase()} fa-xl`}
                             ></i>
                         </div>
-                        <form onSubmit={(e) => handleCreateComment(e)}>
-                            <input
+                        <form
+                            className="comment-input"
+                            onSubmit={(e) => handleCreateComment(e)}
+                        >
+                            <textarea
+                                className="  comment-input"
+                                // onInput={() => auto_grow(this)}
                                 value={text}
                                 onChange={(e) => setText(e.target.value)}
-                            ></input>
-                            <button>Add comment</button>
+                            ></textarea>
+                            <button className="add-comment">Add comment</button>
                         </form>
                     </div>
 
@@ -151,16 +165,36 @@ export default function AnswerCard({ answer }) {
                                             )}
                                         </>
                                     ) : (
-                                        <form onSubmit={(e) => handleUpdateComment(e, comment.id)} className="">
-                                            <input
-                                            value={updateText}
-                                            onChange={(e) => setUpdateText(e.target.value)}
-                                            ></input>
+                                        <form
+                                            onSubmit={(e) =>
+                                                handleUpdateComment(
+                                                    e,
+                                                    comment.id
+                                                )
+                                            }
+                                            className=""
+                                        >
+                                            <textarea
+                                                className="  comment-input"
+                                                value={updateText}
+                                                onChange={(e) =>
+                                                    setUpdateText(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            ></textarea>
                                             <div>
-                                            <button onClick={() => setShowUpdateId(null)}>Cancel</button>
-                                            <button type="submit">Update</button>
+                                                <button
+                                                    onClick={() =>
+                                                        setShowUpdateId(null)
+                                                    }
+                                                >
+                                                    Cancel
+                                                </button>
+                                                <button type="submit">
+                                                    Update
+                                                </button>
                                             </div>
-
                                         </form>
                                     )}
                                 </div>

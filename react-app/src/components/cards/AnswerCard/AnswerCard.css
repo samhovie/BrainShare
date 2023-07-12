@@ -1,0 +1,26 @@
+textarea.comment-input {
+    resize: none;
+    overflow: hidden;
+    min-height: 20px;
+    max-height: 40px;
+    width: 100%;
+    margin-right: 5px;
+
+  }
+
+  form.comment-input {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+  }
+
+  button.add-comment {
+    width: 220px;
+  }
+
+  div.comment-input {
+    margin: 10px 0px;
+    margin-right: 10px;
+  }

@@ -45,7 +45,6 @@ def post_comment(id):
 # @login_required
 def update_comment(id):
 
-    print('WE HERERE KADSAFPDSA ')
     """
     Update a question by id and returns success
     """
@@ -58,7 +57,6 @@ def update_comment(id):
         if comment.user_id == current_user.id:
             comment.text = form.data['text']
             db.session.commit()
-            print('HEOOOOSODAFLDS', comment.to_dict())
             return {'comment': comment.to_dict()}
         else:
             return {"errors": 'nacho comment'}
