@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Question, Answer
 from app.forms import QuestionForm, AnswerForm
+from sqlalchemy import desc
 
 question_routes = Blueprint('questions', __name__)
 
@@ -11,7 +12,8 @@ def questions():
 #     """
 #     Query for all questions and returns them in a list of user dictionaries
 #     """
-    questions = Question.query.all()
+    # questions = Question.query.all()
+    questions = Question.query.order_by(desc(Question.time_created)).all()
     return {'questions': [question.to_dict() for question in questions]}
 
 
