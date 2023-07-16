@@ -55,6 +55,9 @@ export default function FeedPage() {
 
     return (
         <div className="feed page">
+
+            <div className="topics-container"></div>
+
             {questions.map((question, idx) => (
                 <div key={idx} className=" card card-container">
                     <QuestionCard question={question} />

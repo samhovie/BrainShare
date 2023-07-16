@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     # credential = db.Column(db.String(100), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    degree = db.Column(db.String(255), nullable=False)
+    degree = db.Column(db.String(255), nullable=True)
 
     questions = db.relationship('Question', back_populates = 'user', cascade='all, delete-orphan')
 
