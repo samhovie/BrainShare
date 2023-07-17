@@ -1,4 +1,3 @@
-// const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
 
 const DELETE_ANSWER = "answers/DELETE_ANSWER";
 const UPDATE_ANSWER = "answers/UPDATE_ANSWER";

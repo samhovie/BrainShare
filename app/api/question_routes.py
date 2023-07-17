@@ -14,8 +14,6 @@ def questions():
 #     """
     # questions = Question.query.all()
     questions = db.session.query(Question).order_by(desc(Question.time_created)).all()
-    for question in questions:
-        print(question)
     return {'questions': [question.to_dict() for question in questions]}
 
 

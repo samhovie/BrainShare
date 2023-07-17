@@ -18,7 +18,7 @@ class Question(db.Model):
 
 
     user = db.relationship('User', back_populates='questions')
-    answers = db.relationship('Answer', cascade='all, delete-orphan')
+    answers = db.relationship('Answer', cascade='all, delete-orphan', order_by="desc(Answer.time_created)")
 
 
 

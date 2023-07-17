@@ -39,7 +39,6 @@ export default function AnswerCard({ answer }) {
         e.preventDefault();
         // setErrors({});
 
-        console.log();
         await dispatch(
             updateCommentThunk({ id, text: updateText, answer_id: answer.id })
         );

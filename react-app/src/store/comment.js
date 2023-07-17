@@ -1,5 +1,4 @@
-const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
-
+import { normalize } from "../utils";
 const GET_COMMENTS = "comments/GET_COMMENTS";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 const CREATE_COMMENT = "comments/CREATE_COMMENT";
@@ -43,7 +42,6 @@ export const deleteCommentThunk = (id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
-            console.log(data.errors)
             return data.errors
         };
         return dispatch(deleteCommentAction(id));
@@ -81,7 +79,6 @@ export const updateCommentThunk = (comment) => async (dispatch) => {
     if (response.ok) {
 
         const data = await response.json();
-        console.log(data)
         if (data.errors) return data.errors;
         return dispatch(updateCommentAction(data.comment));
     }
