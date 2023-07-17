@@ -20,7 +20,7 @@ class Answer(db.Model):
                              onupdate=func.now(), nullable=True)
 
     user = db.relationship('User', back_populates='answers')
-    comments = db.relationship('Comment', cascade='all, delete-orphan')
+    comments = db.relationship('Comment', cascade='all, delete-orphan', order_by="desc(Comment.time_created)")
 
     def to_dict(self):
         return {

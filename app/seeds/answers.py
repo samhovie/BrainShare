@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 def seed_answers():
-    db.session.add(Answer(user_id=1, question_id=1, text="This be"))
+    db.session.add(Answer(user_id=1, question_id=1, text=fake.paragraph(nb_sentences=5)))
     db.session.add(Answer(user_id=1, question_id=3, text=fake.paragraph(nb_sentences=5)))
     db.session.add(Answer(user_id=1, question_id=4, text=fake.paragraph(nb_sentences=5)))
 
