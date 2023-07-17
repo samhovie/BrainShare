@@ -13,7 +13,9 @@ def questions():
 #     Query for all questions and returns them in a list of user dictionaries
 #     """
     # questions = Question.query.all()
-    questions = Question.query.order_by(desc(Question.time_created)).all()
+    questions = db.session.query(Question).order_by(desc(Question.time_created)).all()
+    for question in questions:
+        print(question)
     return {'questions': [question.to_dict() for question in questions]}
 
 

@@ -1,6 +1,7 @@
 from app.models import db, Question, environment, SCHEMA, fake
 from sqlalchemy.sql import text
 import random
+from datetime import datetime
 
 # Adds a demo user, you can add other users here if you want
 def seed_questions():
@@ -9,7 +10,7 @@ def seed_questions():
     db.session.add(demo)
 
     for _ in range(10):
-        question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?')
+        question = Question(user_id=random.randint(1,11), text=fake.sentence()[:-1] + '?', time_created=datetime.strptime(fake.date(), '%Y-%m-%d'))
         db.session.add(question)
 
 

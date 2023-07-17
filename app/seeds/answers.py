@@ -8,10 +8,10 @@ def seed_answers():
     db.session.add(Answer(user_id=1, question_id=3, text=fake.paragraph(nb_sentences=5)))
     db.session.add(Answer(user_id=1, question_id=4, text=fake.paragraph(nb_sentences=5)))
 
-    for _ in range(100):
-        answer = Answer(user_id=random.randint(1, 11), question_id=random.randint(
-            1, 9), text=fake.paragraph(nb_sentences=5))
-        db.session.add(answer)
+    # for _ in range(100):
+    #     answer = Answer(user_id=random.randint(1, 11), question_id=random.randint(
+    #         1, 9), text=fake.paragraph(nb_sentences=5))
+    #     db.session.add(answer)
 
     db.session.commit()
 

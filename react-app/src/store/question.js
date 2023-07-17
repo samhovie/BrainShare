@@ -1,4 +1,5 @@
-const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
+// const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [ele.id]: ele }), {});
+const normalize = (data) => data.reduce((obj,ele) => ({ ...obj, [Object.keys(obj).length]: ele }), {});
 
 const GET_QUESTIONS = "questions/GET_QUESTIONS";
 const GET_QUESTION = "questions/GET_QUESTION";
@@ -38,6 +39,8 @@ export const getQuestionsThunk = () => async (dispatch) => {
 		if (data.errors) {
             return data.errors;
         }
+		console.log(data.questions)
+		console.log(normalize(data.questions))
 		return dispatch(getQuestionsAction(normalize(data.questions)));
 	}
 };
