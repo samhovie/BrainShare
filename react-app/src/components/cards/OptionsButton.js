@@ -43,7 +43,7 @@ function OptionsButton({ question }) {
                         className="delete-question"
                         onItemClick={closeMenu}
                         modalComponent={<DeleteQuestionModal question={question}/>}
-                        buttonText="Delete"
+                        buttonText={<i className="fa-regular fa-trash-can"></i>}
                     />
                     <OpenModalButton
                         className="update-question"
@@ -51,7 +51,7 @@ function OptionsButton({ question }) {
                         modalComponent={
                             <UpdateQuestionModal question={question} />
                         }
-                        buttonText="Update"
+                        buttonText={<i className="fa-solid fa-pencil"></i>}
                     />
                 </>
             </ul>

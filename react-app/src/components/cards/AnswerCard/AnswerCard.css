@@ -5,22 +5,26 @@ textarea.comment-input {
     max-height: 40px;
     width: 100%;
     margin-right: 5px;
+}
 
-  }
-
-  form.comment-input {
+form.comment-input {
     height: 40px;
     width: 100%;
     display: flex;
     align-items: center;
     margin-top: 3px;
-  }
+}
 
-  button.add-comment {
+button.add-comment {
     width: 220px;
-  }
+}
 
-  div.comment-input {
+div.comment-input {
     margin: 10px 0px;
     margin-right: 10px;
-  }
+}
+
+.answer-card {
+  /* background-color: #eeeeee; */
+  padding-right: 10px;
+}

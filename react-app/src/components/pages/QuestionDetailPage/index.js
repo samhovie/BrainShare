@@ -24,12 +24,12 @@ export default function QuestionDetail() {
     }
     return (
         <div className="page">
-            <div className=" card card-container">
+            <div className=" question-card card card-container">
                 <QuestionCard question={question} />
             </div>
 
             {question.answers.map((answer) => (
-                <div key={answer.id} className=" card card-container">
+                <div key={answer.id} className="card card-container answer-card">
                     <AnswerCard answer={answer} />
                 </div>
             ))}

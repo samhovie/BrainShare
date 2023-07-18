@@ -13,8 +13,6 @@ def seed_comments():
     db.session.add(Comment(user_id=1, answer_id=1, text=fake.paragraph(nb_sentences=5)))
     db.session.add(Comment(user_id=2, answer_id=1, text=fake.paragraph(nb_sentences=5)))
     db.session.add(Comment(user_id=3, answer_id=1, text=fake.paragraph(nb_sentences=5)))
-    db.session.add(Comment(user_id=2, answer_id=1, text=fake.paragraph(nb_sentences=5)))
-    db.session.add(Comment(user_id=3, answer_id=1, text=fake.paragraph(nb_sentences=5)))
     db.session.commit()
 
 

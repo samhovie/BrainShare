@@ -65,25 +65,6 @@ export default function AnswerCard({ answer }) {
             </div>
 
             <div className="card card-button-row">
-                {sessionUser.id === answer.user.id && (
-                    <>
-                        <OpenModalButton
-                            className="delete-question"
-                            modalComponent={
-                                <DeleteAnswerModal answer={answer} />
-                            }
-                            buttonText="Delete"
-                        />
-                        <OpenModalButton
-                            className="update-question"
-                            modalComponent={
-                                <UpdateAnswerModal answer={answer} />
-                            }
-                            buttonText="Update"
-                        />
-                    </>
-                )}
-                {/* add num comments */}
                 <button
                     onClick={() => {
                         showComments
@@ -94,6 +75,27 @@ export default function AnswerCard({ answer }) {
                 >
                     <i className="fa-regular fa-comment"></i>
                 </button>
+                {sessionUser.id === answer.user.id && (
+                    <>
+                        <OpenModalButton
+                            className="delete-question"
+                            modalComponent={
+                                <DeleteAnswerModal answer={answer} />
+                            }
+                            buttonText={
+                                <i className="fa-regular fa-trash-can"></i>
+                            }
+                        />
+                        <OpenModalButton
+                            className="update-question"
+                            modalComponent={
+                                <UpdateAnswerModal answer={answer} />
+                            }
+                            buttonText={<i className="fa-solid fa-pencil"></i>}
+                        />
+                    </>
+                )}
+                {/* add num comments */}
             </div>
             {showComments && (
                 // this will be a map / list of comments
@@ -149,7 +151,9 @@ export default function AnswerCard({ answer }) {
                                                                 }
                                                             />
                                                         }
-                                                        buttonText="Delete"
+                                                        buttonText={
+                                                            <i className="fa-regular fa-trash-can"></i>
+                                                        }
                                                     />
                                                     <button
                                                         onClick={() =>
@@ -191,7 +195,7 @@ export default function AnswerCard({ answer }) {
                                                     Cancel
                                                 </button>
                                                 <button type="submit">
-                                                    Update
+                                                    <i className="fa-solid fa-pencil"></i>
                                                 </button>
                                             </div>
                                         </form>

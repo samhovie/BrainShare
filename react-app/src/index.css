@@ -37,7 +37,8 @@ button {
     border-radius: 5px;
 }
 
-/* .modal-button {
+/* .modal-button_add-answer {
+
 
 } */
 
@@ -156,4 +157,8 @@ textarea {
 
 .padding-md {
     padding: 10px 15px;
+}
+
+.no-border {
+    border: none;
 }
