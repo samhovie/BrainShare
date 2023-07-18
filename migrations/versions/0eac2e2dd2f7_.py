@@ -1,16 +1,20 @@
 """empty message
 
-Revision ID: d3a0415344bb
-Revises: 
-Create Date: 2023-07-17 19:01:29.599599
+Revision ID: 0eac2e2dd2f7
+Revises:
+Create Date: 2023-07-18 18:15:23.574823
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = 'd3a0415344bb'
+revision = '0eac2e2dd2f7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,6 +46,8 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('question_id', sa.Integer(), nullable=False),
     sa.Column('text', sa.String(length=500), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -51,11 +57,19 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('answer_id', sa.Integer(), nullable=False),
     sa.Column('text', sa.String(length=500), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['answer_id'], ['answers.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE questions SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE answers SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+
 
 
 def downgrade():
