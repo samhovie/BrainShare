@@ -126,7 +126,7 @@ export default function AnswerCard({ answer }) {
                             className="card flex flex-row comment-container"
                         >
                             <div className="flex center card-icon-container">
-                                <i className={`fa-solid fa-g fa-xl`}></i>
+                                <i className={`fa-solid fa-${sessionUser.username[0].toLowerCase()} fa-xl`}></i>
                             </div>
                             <>
                                 <div className="comment-content">
