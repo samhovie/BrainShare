@@ -4,14 +4,14 @@ import { getQuestionThunk } from "../../../store/question";
 import { deleteCommentThunk } from "../../../store/comment";
 import { useModal } from "../../../context/Modal";
 
-export default function DeleteCommentModal({ comment }) {
+export default function DeleteCommentModal({ comment, questionId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     async function handleDeleteComment(comment) {
         const id = comment.answer_id;
         await dispatch(deleteCommentThunk(comment.id));
-        await dispatch(getQuestionThunk(id)); // do we need this?
+        await dispatch(getQuestionThunk(questionId)); // do we need this?
         closeModal();
     }
 

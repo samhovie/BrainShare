@@ -149,6 +149,7 @@ export default function AnswerCard({ answer }) {
                                                                 comment={
                                                                     comment
                                                                 }
+                                                                questionId={answer.question_id}
                                                             />
                                                         }
                                                         buttonText={
