@@ -26,7 +26,6 @@ export default function AnswerCard({ answer }) {
 
     async function handleCreateComment(e) {
         e.preventDefault();
-        // setErrors({});
 
         await dispatch(createCommentThunk({ text, answer_id: answer.id }));
         await dispatch(getQuestionThunk(answer.question_id));
@@ -37,16 +36,12 @@ export default function AnswerCard({ answer }) {
 
     async function handleUpdateComment(e, id) {
         e.preventDefault();
-        // setErrors({});
 
         await dispatch(
             updateCommentThunk({ id, text: updateText, answer_id: answer.id })
         );
         await dispatch(getQuestionThunk(answer.question_id));
         setShowUpdateId(null);
-        // setText("");
-        // closeModal();
-        // history.push('/questions/' + question_id)
     }
 
     async function showUpdateCommentInput(id) {
