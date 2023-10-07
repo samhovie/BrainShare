@@ -37,11 +37,6 @@ button {
     border-radius: 5px;
 }
 
-/* .modal-button_add-answer {
-
-
-} */
-
 * {
     box-sizing: border-box;
     font-family: Arial;
@@ -134,7 +129,6 @@ ul {
 
 .create-qa-container {
     width: 500px;
-    /* height: 400px; */
     height: fit-content;
     padding: 10px 20px;
     border-radius: 10px;
