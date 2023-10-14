@@ -3,12 +3,10 @@
     width: 620px;
     border: 1px solid darkgray;
     margin-right: 0px;
-
     background-color: #ffffff;
     border-radius: 5px;
     padding: 5px 0px 10px 15px;
     margin: 10px 0px;
-
 
 }
 
@@ -25,7 +23,6 @@
 
 
 .card-button-row {
-    /* border: 1px solid red; */
     height: 40px;
     margin-top: 10px;
 }
