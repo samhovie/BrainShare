@@ -90,7 +90,6 @@ export default function AnswerCard({ answer }) {
                         />
                     </>
                 )}
-                {/* add num comments */}
             </div>
             {showComments && (
                 // this will be a map / list of comments
